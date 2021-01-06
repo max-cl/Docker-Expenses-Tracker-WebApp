@@ -54,7 +54,7 @@ passport.use(
                     last_name: userInfo.last_name,
                     phone: userInfo.phone,
                     email: userInfo.email,
-                    active: userInfo.active,
+                    // active: userInfo.active,
                     description: userInfo.description,
                     username: userInfo.username,
                     password: hashedPassword,

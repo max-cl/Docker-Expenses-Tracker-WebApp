@@ -7,7 +7,7 @@ export interface UserRegister {
     username: string;
     password: string;
     description: string;
-    active: boolean;
+    active?: boolean;
     roles: string;
 }
 

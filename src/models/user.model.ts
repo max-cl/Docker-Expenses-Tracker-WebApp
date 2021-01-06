@@ -11,7 +11,7 @@ interface UserAttributes {
     username: string;
     password: string;
     description: string;
-    active: boolean;
+    active?: boolean;
     createdAt?: Date;
     updatedAt?: Date;
     deletedAt?: Date;
