@@ -47,7 +47,7 @@ export class ProductController {
                     const { product_name, in_stock, price, category_id } = <ProductCreate>req.body;
                     const newProduct = await this.productService.createNewProduct(product_name, in_stock, price, category_id);
                     console.log("DATA: ", newProduct);
-                    res.status(200).json(newProduct);
+                    res.status(201).json(newProduct);
                 } catch (e) {
                     console.error(e);
                 }

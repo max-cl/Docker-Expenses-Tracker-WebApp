@@ -65,3 +65,5 @@ typings/
 error.log
 info.log
 package-lock.json
+
+.prettierrc

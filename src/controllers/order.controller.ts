@@ -47,7 +47,7 @@ export class OrderController {
                     const { user_id, products } = <IOrderCreate>req.body;
                     const newOrder = await this.orderService.createNewOrder(user_id, products);
                     console.log("DATA: ", newOrder);
-                    res.status(200).json({ newOrder, message: "Order created" });
+                    res.status(201).json({ newOrder, message: "Order created" });
                 } catch (e) {
                     console.error(e);
                 }
