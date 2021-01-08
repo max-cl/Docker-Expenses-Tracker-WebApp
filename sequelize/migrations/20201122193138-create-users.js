@@ -3,54 +3,58 @@ module.exports.up = (queryInterface, DataTypes) => {
         "users",
         {
             user_id: {
+                type: DataTypes.INTEGER.UNSIGNED,
                 allowNull: false,
                 autoIncrement: true,
                 primaryKey: true,
-                type: DataTypes.INTEGER.UNSIGNED
             },
             first_name: {
+                type: DataTypes.STRING,
                 allowNull: false,
-                type: DataTypes.STRING
             },
             last_name: {
+                type: DataTypes.STRING,
                 allowNull: false,
-                type: DataTypes.STRING
             },
             username: {
                 type: DataTypes.STRING,
-                allowNull: false
+                allowNull: false,
             },
             phone: {
                 type: DataTypes.INTEGER.UNSIGNED,
-                allowNull: false
+                allowNull: false,
             },
             email: {
                 type: DataTypes.STRING,
-                allowNull: false
+                allowNull: false,
             },
             password: {
                 type: DataTypes.STRING,
-                allowNull: false
+                allowNull: false,
             },
             description: {
                 type: DataTypes.TEXT,
-                allowNull: true
+                allowNull: true,
             },
-            status: {
+            active: {
                 type: DataTypes.BOOLEAN,
-                allowNull: true
+                allowNull: true,
+                defaultValue: true,
             },
             createdAt: {
+                type: DataTypes.DATE,
                 allowNull: false,
-                type: DataTypes.DATE
+                defaultValue: DataTypes.NOW,
             },
             updatedAt: {
+                type: DataTypes.DATE,
                 allowNull: false,
-                type: DataTypes.DATE
+                defaultValue: DataTypes.NOW,
             },
             deletedAt: {
+                type: DataTypes.DATE,
                 allowNull: true,
-                type: DataTypes.DATE
+                defaultValue: null,
             }
         },
         {

@@ -3,26 +3,29 @@ module.exports.up = (queryInterface, DataTypes) => {
         "roles",
         {
             role_id: {
+                type: DataTypes.INTEGER.UNSIGNED,
                 allowNull: false,
                 autoIncrement: true,
                 primaryKey: true,
-                type: DataTypes.INTEGER.UNSIGNED
             },
             role_name: {
+                type: DataTypes.STRING,
                 allowNull: false,
-                type: DataTypes.STRING
             },
             createdAt: {
+                type: DataTypes.DATE,
                 allowNull: false,
-                type: DataTypes.DATE
+                defaultValue: DataTypes.NOW,
             },
             updatedAt: {
+                type: DataTypes.DATE,
                 allowNull: false,
-                type: DataTypes.DATE
+                defaultValue: DataTypes.NOW,
             },
             deletedAt: {
+                type: DataTypes.DATE,
                 allowNull: true,
-                type: DataTypes.DATE
+                defaultValue: null,
             }
         },
         {

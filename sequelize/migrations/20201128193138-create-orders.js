@@ -1,36 +1,25 @@
 module.exports.up = (queryInterface, DataTypes) => {
     return queryInterface.createTable(
-        "products",
+        "orders",
         {
-            product_id: {
+            order_id: {
                 type: DataTypes.INTEGER.UNSIGNED,
                 autoIncrement: true,
                 primaryKey: true,
                 allowNull: false,
             },
-            category_id: {
+            order_date: {
+                type: DataTypes.DATE,
+                allowNull: false,
+                defaultValue: DataTypes.NOW,
+            },
+            user_id: {
                 allowNull: false,
                 references: {
-                  key: "category_id",
-                  model: "product_categories"
+                    key: "user_id",
+                    model: "users"
                 },
                 type: DataTypes.INTEGER.UNSIGNED
-            },
-            product_name: {
-                type: DataTypes.STRING,
-                allowNull: false,
-            },
-            in_stock: {
-                type: DataTypes.INTEGER.UNSIGNED,
-                allowNull: false,
-            },
-            price: {
-                type: DataTypes.INTEGER.UNSIGNED,
-                allowNull: false,
-            },
-            category_id: {
-                type: DataTypes.INTEGER.UNSIGNED,
-                allowNull: false,
             },
             createdAt: {
                 type: DataTypes.DATE,
@@ -54,4 +43,4 @@ module.exports.up = (queryInterface, DataTypes) => {
     );
 };
 
-module.exports.down = queryInterface => queryInterface.dropTable("products");
+module.exports.down = queryInterface => queryInterface.dropTable("product_categories");
