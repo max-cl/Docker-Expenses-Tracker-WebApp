@@ -20,7 +20,7 @@ export class AuthController {
                     try {
                         // HERE ADD CODE TO LOGIN AFTER THE USER WAS REGISTERED
                         console.log(`User "${user.username}" created in db`);
-                        res.status(200).send({ message: `User: ${user.username} created in db` });
+                        res.status(201).send({ message: `User: ${user.username} created in db` });
                         // }
                     } catch (error) {
                         // console.log("Error: ", error);
