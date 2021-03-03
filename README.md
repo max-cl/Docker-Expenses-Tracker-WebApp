@@ -26,6 +26,7 @@
     - Sequelize ORM
     - Nodemailer (Send emails)
     - Joi
+    - Test (Mocha and Chai)
 
 ### Database
 
