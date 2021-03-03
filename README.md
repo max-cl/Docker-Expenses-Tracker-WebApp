@@ -10,7 +10,7 @@
 
 #### Dashboard
 
-    ![Image of Dashboard](https://github.com/max-cl/Docker-Expenses-Tracker-WebApp/blob/main/images/dashboard.png?raw=true)
+    ![Image of Dashboard](https://github.com/max-cl/Docker-Expenses-Tracker-WebApp/blob/main/images/dashboard.png)
 
 #### Expenses
 
