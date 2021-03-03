@@ -8,18 +8,6 @@
     - Expenses
     - Profile
 
-#### Dashboard
-
-    ![Image of Dashboard](https://github.com/max-cl/Docker-Expenses-Tracker-WebApp/blob/main/images/dashboard.png?raw=true)
-
-#### Expenses
-
-    ![Image of Expenses](https://github.com/max-cl/Docker-Expenses-Tracker-WebApp/blob/main/images/expenses.png?raw=true)
-
-#### Profile
-
-    ![Image of Profile](https://github.com/max-cl/Docker-Expenses-Tracker-WebApp/blob/main/images/profile.png?raw=true)
-
 ## Main Technologies
 
     - Docker
