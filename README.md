@@ -10,15 +10,15 @@
 
 #### Dashboard
 
-    ![Image of Dashboard](https://github.com/max-cl/Docker-Expenses-Tracker-WebApp/images/dashboard.png)
+    ![Image of Dashboard](https://github.com/max-cl/Docker-Expenses-Tracker-WebApp/blob/main/images/dashboard.png)
 
 #### Expenses
 
-    ![Image of Expenses](https://github.com/max-cl/Docker-Expenses-Tracker-WebApp/images/expenses.png)
+    ![Image of Expenses](https://github.com/max-cl/Docker-Expenses-Tracker-WebApp/blob/main/images/expenses.png)
 
 #### Profile
 
-    ![Image of Profile](https://github.com/max-cl/Docker-Expenses-Tracker-WebApp/images/profile.png)
+    ![Image of Profile](https://github.com/max-cl/Docker-Expenses-Tracker-WebApp/blob/main/images/profile.png)
 
 ## Main Technologies
 
