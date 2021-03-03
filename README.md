@@ -8,20 +8,6 @@
     - Expenses
     - Profile
 
-#### Dashboard
-
-    ![dashboard](https://user-images.githubusercontent.com/39265526/109818481-51a6e300-7c33-11eb-8d5a-c293d5833951.png)
-    
-#### Expenses
-
-    ![expenses](https://user-images.githubusercontent.com/39265526/109818529-5cfa0e80-7c33-11eb-9dc3-f6ce3c55c769.png)    
-
-#### Profile
-
-    ![Profile](https://user-images.githubusercontent.com/39265526/109818556-64b9b300-7c33-11eb-94b9-1ec697eff355.png)
-
-
-
 ## Main Technologies
 
     - Docker
