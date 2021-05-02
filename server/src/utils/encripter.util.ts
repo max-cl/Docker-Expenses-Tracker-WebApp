@@ -1,4 +1,4 @@
-import bcrypt from "bcrypt";
+import bcrypt from 'bcrypt';
 
 // Bcrypt constant
 const BCRYPT_SALT_ROUNDS = 12;
@@ -13,6 +13,5 @@ export const encriptPassword = async (password: string): Promise<string> => {
     }
 };
 
-export const isEqualsPassword = async (loginPassword: string, passwordEncripted: string): Promise<boolean> => {
-    return await bcrypt.compare(loginPassword, passwordEncripted);
-};
+export const isEqualsPassword = async (loginPassword: string, passwordEncripted: string): Promise<boolean> =>
+    await bcrypt.compare(loginPassword, passwordEncripted);

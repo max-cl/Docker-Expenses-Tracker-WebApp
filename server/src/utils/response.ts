@@ -1,6 +1,6 @@
-import { Response } from "express";
+import { Response } from 'express';
 
-export const applicationJson = "application/json";
+export const applicationJson = 'application/json';
 
 export interface ApiResponse {
     <T>(res: Response, data: T, statusCode: number): Response;
@@ -16,25 +16,21 @@ export interface FailedResponse<T = any> {
     data: T;
 }
 
-export const apiResponse: ApiResponse = (res, data, statusCode): Response => {
-    return res.format({
+export const apiResponse: ApiResponse = (res, data, statusCode): Response =>
+    res.format({
         json: () => {
             res.type(applicationJson);
             res.status(statusCode).send(data);
         },
     });
+
+export const successResponse = (data: any): SuccessResponse => {
+    return { success: true, data };
 };
 
-export function successResponse(data: any): SuccessResponse {
-    return {
-        success: true,
-        data,
-    };
-}
-
-export function failedResponse(data: any): FailedResponse {
+export const failedResponse = (data: any): FailedResponse => {
     return {
         success: false,
         data,
     };
-}
+};

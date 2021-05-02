@@ -4,7 +4,7 @@ FROM node:12
 COPY package*.json ./
 
 ENV PORT=5000
-ENV DB_URL=mysql://root:123123@db:3306/test?charset=UTF8
+ENV DB_URL=mysql://root:123123123@db:3306/test?charset=UTF8
 ENV JWT_SECRET=super-secret-key
 ENV EMAIL_ADDRESS=email@email.com
 ENV EMAIL_PASSWORD=email_password
@@ -22,7 +22,7 @@ RUN npm run build
 # Expose port 5000
 EXPOSE 5000
 
-## THE LIFE SAVER
+## Utility to wait for the DB
 ADD https://github.com/ufoscout/docker-compose-wait/releases/download/2.2.1/wait /wait
 RUN chmod +x /wait
 

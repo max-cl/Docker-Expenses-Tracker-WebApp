@@ -1,15 +1,16 @@
-import { sign, verify } from "jsonwebtoken";
-
-// Utils
-import accessEnv from "../utils/accessEnv";
+import 'dotenv/config';
+import { sign, verify } from 'jsonwebtoken';
 
 // ENV Variables
-const jwtSecret = accessEnv("JWT_SECRET");
+const jwtSecret = process.env.JWT_SECRET;
 
 export const createToken = async (user_id: number) => {
-    return sign({ user_id: user_id }, `${jwtSecret}`, { algorithm: "HS512", expiresIn: "1h" });
+  return sign({ user_id: user_id }, `${jwtSecret}`, {
+    algorithm: 'HS512',
+    expiresIn: '1h',
+  });
 };
 
 export const validateToken = async (token: string) => {
-    return verify(token, `${jwtSecret}`, { algorithms: ["HS512"] });
+  return verify(token, `${jwtSecret}`, { algorithms: ['HS512'] });
 };

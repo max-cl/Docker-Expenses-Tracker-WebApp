@@ -36,17 +36,19 @@
 
 ## Useful Docker commands
 
-    - docker-compose up (run the services)
-    - docker-compose up -d (run the services in the background)
+    - docker-compose up --build (build the images and run the services)
+    - docker-compose up (run services)
+    - docker-compose up -d (run services in background)
     - docker ps (list the containers are running)
-    - docker logs ID_CONTAINER (see the logs of a container)
+    - docker image ls (list images)
+    - docker logs ID_CONTAINER (see logs of a container)
     - docker start/stop ID_CONTAINER (start/stop a container)
     - docker exec -it ID_CONTAINER mysql -uYOUR_USERNAME -pYOUR_PASSWORD (connect to the mysql container)
 
 ## Run WebApp
 
     - git clone https://github.com/max-cl/Docker-Expenses-Tracker-WebApp.git
-    - docker-compose up -d
+    - docker-compose up --build
     - docker ps
     - docker exec -it ID_CONTAINER mysql -uYOUR_USERNAME -pYOUR_PASSWORD test
     - INSERT Roles (you can find the query in "FAKE_DATA_FILL_TABLES.sql" file)

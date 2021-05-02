@@ -1,5 +1,5 @@
-import { Model, DataTypes, Sequelize, BelongsToManySetAssociationsMixin, Optional } from "sequelize";
-import { Role } from "./role.model";
+import { Model, DataTypes, Sequelize, BelongsToManySetAssociationsMixin, Optional } from 'sequelize';
+import { Role } from './role.model';
 
 // These are all the attributes in the User model
 interface UserAttributes {
@@ -20,7 +20,7 @@ interface UserAttributes {
 }
 
 // Some attributes are optional in `User.build` and `User.create` calls
-interface UserCreationAttributes extends Optional<UserAttributes, "user_id"> {}
+interface UserCreationAttributes extends Optional<UserAttributes, 'user_id'> {}
 
 export class User extends Model<UserAttributes, UserCreationAttributes> implements UserAttributes {
     public user_id!: number; // Note that the `null assertion` `!` is required in strict mode.
@@ -114,11 +114,10 @@ export default (sequelize: Sequelize): typeof User => {
             },
         },
         {
-            tableName: "users",
-            modelName: "User",
-            // underscored: true,
-            sequelize, // passing the `sequelize` instance is required
-        },
+            tableName: 'users',
+            modelName: 'User',
+            sequelize,
+        }
     );
 
     return User;
