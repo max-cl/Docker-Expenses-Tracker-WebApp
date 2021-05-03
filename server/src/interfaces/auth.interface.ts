@@ -25,3 +25,10 @@ export interface UserUpdate {
     username: string;
     description: string;
 }
+
+export interface ImailOptions {
+    from: string;
+    to: string;
+    subject: string;
+    html: string;
+}

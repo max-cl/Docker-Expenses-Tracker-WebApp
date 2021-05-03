@@ -97,7 +97,7 @@ passport.use(
                 return done(null, user);
             } catch (error) {
                 logger.error('Error while login', { meta: { ...error } });
-                done(error);
+                return done(error);
             }
         }
     )
@@ -115,10 +115,10 @@ passport.use(
             const user = await authService.getUserById(jwt_payload.user_id);
             if (user) {
                 logger.info('User found in db in passport');
-                done(null, user);
+                return done(null, user);
             }
             logger.info('User not found in db');
-            done(null, false);
+            return done(null, false);
         } catch (error) {
             logger.error('Error while token validation', { meta: { ...error } });
             done(error);
