@@ -21,7 +21,7 @@ export class AppController {
 
                         if (expenseCategories.length > 0) {
                             logger.info('Getting App Data');
-                            return apiResponse(res, successResponse(expenseCategories), 200);
+                            return apiResponse(res, successResponse({ expenseCategories }), 200);
                         }
                         logger.warn('There is not app data for this user');
                         return apiResponse(res, failedResponse('There is not app data for this user'), 404);
