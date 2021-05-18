@@ -1,13 +1,13 @@
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 
 export const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         FormContainer: {
-            width: '270px',
+            width: "370px",
             border: `3px solid ${theme.palette.primary.main}`,
-            borderRadius: '0.8em',
-            padding: '6em 2em',
-            position: 'relative',
+            borderRadius: "0.8em",
+            padding: "6em 2em",
+            position: "relative",
             zIndex: 1,
 
             // '&::before': {
@@ -23,5 +23,5 @@ export const useStyles = makeStyles((theme: Theme) =>
             //     zIndex: '-1',
             // },
         },
-    })
+    }),
 );

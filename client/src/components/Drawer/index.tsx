@@ -1,26 +1,26 @@
-import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import clsx from 'clsx';
-import { useTheme } from '@material-ui/core/styles';
+import React from "react";
+import { Link, useLocation } from "react-router-dom";
+import clsx from "clsx";
+import { useTheme } from "@material-ui/core/styles";
 
 // Material UI
-import Drawer from '@material-ui/core/Drawer';
-import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import BarChartIcon from '@material-ui/icons/BarChart';
-import TableChartIcon from '@material-ui/icons/TableChart';
+import Drawer from "@material-ui/core/Drawer";
+import List from "@material-ui/core/List";
+import Divider from "@material-ui/core/Divider";
+import IconButton from "@material-ui/core/IconButton";
+import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
+import ChevronRightIcon from "@material-ui/icons/ChevronRight";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
+import BarChartIcon from "@material-ui/icons/BarChart";
+import TableChartIcon from "@material-ui/icons/TableChart";
 
 // Interface
-import { IProps } from './interfaces';
+import { IProps } from "./interfaces";
 
 // Styles
-import { useStyles } from './styles';
+import { useStyles } from "./styles";
 
 const MyDrawer: React.FC<IProps> = ({ open, handleDrawer, sectionsInfo, onSectionClick, children }) => {
     // Material UI
@@ -45,7 +45,13 @@ const MyDrawer: React.FC<IProps> = ({ open, handleDrawer, sectionsInfo, onSectio
                 }}
             >
                 <div className={classes.toolbar}>
-                    <IconButton onClick={handleDrawer}>{theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}</IconButton>
+                    <IconButton onClick={handleDrawer}>
+                        {theme.direction === "rtl" ? (
+                            <ChevronRightIcon className={classes.icon} />
+                        ) : (
+                            <ChevronLeftIcon className={classes.icon} />
+                        )}
+                    </IconButton>
                 </div>
 
                 <Divider />
@@ -53,7 +59,21 @@ const MyDrawer: React.FC<IProps> = ({ open, handleDrawer, sectionsInfo, onSectio
                 <List>
                     {sectionsInfo.map((d, index) => (
                         <ListItem button key={d.label} component={Link} to={d.path} onClick={() => onSectionClick(d.label)}>
-                            <ListItemIcon>{index % 2 === 0 ? <BarChartIcon /> : <TableChartIcon />}</ListItemIcon>
+                            <ListItemIcon>
+                                {index % 2 === 0 ? (
+                                    <BarChartIcon
+                                        className={clsx(classes.icon, {
+                                            [classes.iconSelected]: location.pathname === d.path,
+                                        })}
+                                    />
+                                ) : (
+                                    <TableChartIcon
+                                        className={clsx(classes.icon, {
+                                            [classes.iconSelected]: location.pathname === d.path,
+                                        })}
+                                    />
+                                )}
+                            </ListItemIcon>
                             <ListItemText
                                 primary={d.label}
                                 classes={{

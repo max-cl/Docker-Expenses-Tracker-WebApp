@@ -14,7 +14,12 @@ import { logout } from "../../redux/thunks/auth.thunk";
 // Interface
 import { IProps } from "./interfaces";
 
+// Styles
+import { useStyles } from "./styles";
+
 const MenuAccount: React.FC<IProps> = ({ anchorEl, handleMenu, handleClose }) => {
+    // Material UI
+    const classes = useStyles();
     // Redux
     const dispatch = useDispatch();
 
@@ -34,6 +39,7 @@ const MenuAccount: React.FC<IProps> = ({ anchorEl, handleMenu, handleClose }) =>
                 aria-haspopup="true"
                 onClick={handleMenu}
                 color="inherit"
+                className={classes.iconButton}
             >
                 <AccountCircle />
             </IconButton>
@@ -53,7 +59,7 @@ const MenuAccount: React.FC<IProps> = ({ anchorEl, handleMenu, handleClose }) =>
                 onClose={handleClose}
             >
                 {items.map((item) => (
-                    <MenuItem onClick={item.func} key={item.id}>
+                    <MenuItem onClick={item.func} key={item.id} className={classes.menuItem}>
                         {item.label}
                     </MenuItem>
                 ))}

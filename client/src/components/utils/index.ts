@@ -1,4 +1,4 @@
-export const addServerErrors = <T,>(
+export const addServerErrors = <T>(
     errors: { [P in keyof T]?: string },
     setError: (fieldName: keyof T, error: { type: string; message: string }) => void,
 ) => {

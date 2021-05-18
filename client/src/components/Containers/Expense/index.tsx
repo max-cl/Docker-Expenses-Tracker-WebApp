@@ -1,32 +1,36 @@
-import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 // Material UI
-import Typography from '@material-ui/core/Typography';
-import AddIcon from '@material-ui/icons/Add';
+import Typography from "@material-ui/core/Typography";
+import AddIcon from "@material-ui/icons/Add";
 
 // Components
-import TableExpenses from '../../TableExpenses';
-import Modal from '../../Common/Modal';
-import FormAddNewExpense from '../../FormAddNewExpense';
-import FormEditExpense from '../../FormEditExpense';
-import Button from '../../Common/Controls/Button';
-import Spinner from '../../Common/Spinner';
+import TableExpenses from "../../TableExpenses";
+import Modal from "../../Common/Modal";
+import FormAddNewExpense from "../../FormAddNewExpense";
+import FormEditExpense from "../../FormEditExpense";
+import Button from "../../Common/Controls/Button";
 
 // Thunks
-import { getExpenses, removeExpense, updateExpense, createExpense } from '../../../redux/thunks/expenses.thunk';
-import { getAppData } from '../../../redux/thunks/app.thunk';
-import { returnErrors, clearErrors, returnErrorsInputFields } from '../../../redux/thunks/error.thunk';
+import { getExpenses, removeExpense, updateExpense, createExpense } from "../../../redux/thunks/expenses.thunk";
+import { getAppData } from "../../../redux/thunks/app.thunk";
+import { clearErrors } from "../../../redux/thunks/error.thunk";
 
 // Actions
-import { cleanExpenseResponseSuccess } from '../../../redux/actions/expense.action';
+import { cleanExpenseResponseSuccess } from "../../../redux/actions/expense.action";
 
 // Interfaces
-import { IExpenseSelected, INewExpense } from './interfaces';
-import { RootState } from '../../../redux/reducers';
+import { IExpenseSelected, INewExpense } from "./interfaces";
+import { RootState } from "../../../redux/reducers";
+
+// Styles
+import { useStyles } from "./styles";
 
 const Expense: React.FC<{}> = () => {
+    // Material UI
+    const classes = useStyles();
     // React router
     let history = useHistory();
     // To use the actions
@@ -45,24 +49,24 @@ const Expense: React.FC<{}> = () => {
     const [openAddExpense, setOpenAddExpense] = useState<boolean>(false);
     const [openEditExpense, setOpenEditExpense] = useState<boolean>(false);
     const [newExpense, setNewExpense] = useState<INewExpense>({
-        expense_name: '',
+        expense_name: "",
         amount: 0,
         category_id: 0,
         expense_date: new Date(),
-        img_link: 'img_link',
+        img_link: "img_link",
     });
     const [expenseSelected, setExpenseSelected] = useState<IExpenseSelected>({
         expense_id: 0,
-        expense_name: '',
+        expense_name: "",
         amount: 0,
         category_id: 0,
         expense_date: new Date(),
-        img_link: '',
+        img_link: "",
     });
 
     useEffect(() => {
         if (!isAuthenticated) {
-            history.push('/login');
+            history.push("/login");
         } else {
             if (Object.entries(userInfo).length > 0) {
                 dispatch(getAppData(userInfo.user_id));
@@ -87,11 +91,11 @@ const Expense: React.FC<{}> = () => {
         dispatch(cleanExpenseResponseSuccess());
         dispatch(clearErrors());
         setNewExpense({
-            expense_name: '',
+            expense_name: "",
             amount: 0,
             category_id: 0,
             expense_date: new Date(),
-            img_link: 'img_link',
+            img_link: "img_link",
         });
         setOpenAddExpense(!openAddExpense);
     };
@@ -107,15 +111,15 @@ const Expense: React.FC<{}> = () => {
                 newExpense.amount,
                 newExpense.expense_date,
                 newExpense.img_link,
-                newExpenseId
-            )
+                newExpenseId,
+            ),
         );
-        console.log('newExpense: ', newExpense);
+        console.log("newExpense: ", newExpense);
     };
 
     const deleteExpense = (expense_id: number) => {
         dispatch(removeExpense(userInfo.user_id, expense_id));
-        console.log('Expense removed [ID]: ', expense_id);
+        console.log("Expense removed [ID]: ", expense_id);
     };
 
     const editExpense = (expense_id: number) => {
@@ -123,8 +127,8 @@ const Expense: React.FC<{}> = () => {
         setOpenEditExpense(!openEditExpense);
         let expense = expenses.filter((f: { expense_id: number }) => f.expense_id === expense_id);
         setExpenseSelected(expense[0]);
-        console.log('expense selected: ', expense[0]);
-        console.log('ID selected: ', expense_id);
+        console.log("expense selected: ", expense[0]);
+        console.log("ID selected: ", expense_id);
     };
 
     const handleOnChangeEditExpense = (name: string, value: string) => {
@@ -148,19 +152,19 @@ const Expense: React.FC<{}> = () => {
                 expenseSelected.category_id,
                 expenseSelected.amount,
                 expenseSelected.expense_date,
-                expenseSelected.img_link
-            )
+                expenseSelected.img_link,
+            ),
         );
         console.log(`Expense (${expenseSelected.expense_id}) Updated: `, expenseSelected);
     };
 
     if (expenses.length === 0 || errorInfo.status === 404) {
         return (
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            <div className={classes.mainContainer}>
                 <div>
                     <Button
                         label="Add Expense"
-                        color="secondary"
+                        color="primary"
                         isDisabled={false}
                         onClick={openModalAddExpense}
                         btnType="button"
@@ -187,7 +191,7 @@ const Expense: React.FC<{}> = () => {
         );
     }
     return (
-        <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+        <div className={classes.mainContainer}>
             <Modal open={openAddExpense} handleModal={() => setOpenAddExpense(!openAddExpense)}>
                 <FormAddNewExpense
                     newExpense={newExpense}
@@ -215,14 +219,17 @@ const Expense: React.FC<{}> = () => {
                     expenseMessage={expenseMessage}
                 />
             </Modal>
-            <Button
-                label="Add Expense"
-                color="secondary"
-                isDisabled={false}
-                onClick={openModalAddExpense}
-                btnType="button"
-                icon={<AddIcon />}
-            />
+            <div className={classes.buttonAddExpensecontainer}>
+                <Button
+                    label="Add Expense"
+                    color="primary"
+                    isDisabled={false}
+                    onClick={openModalAddExpense}
+                    btnType="button"
+                    icon={<AddIcon />}
+                />
+            </div>
+
             <TableExpenses data={expenses} deleteExpense={deleteExpense} editExpense={editExpense} expenseCategories={expenseCategories} />
         </div>
     );
