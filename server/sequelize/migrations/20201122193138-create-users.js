@@ -1,6 +1,6 @@
 module.exports.up = (queryInterface, DataTypes) => {
     return queryInterface.createTable(
-        "users",
+        'users',
         {
             user_id: {
                 type: DataTypes.INTEGER.UNSIGNED,
@@ -20,10 +20,6 @@ module.exports.up = (queryInterface, DataTypes) => {
                 type: DataTypes.STRING,
                 allowNull: false,
             },
-            phone: {
-                type: DataTypes.INTEGER.UNSIGNED,
-                allowNull: false,
-            },
             email: {
                 type: DataTypes.STRING,
                 allowNull: false,
@@ -31,10 +27,6 @@ module.exports.up = (queryInterface, DataTypes) => {
             password: {
                 type: DataTypes.STRING,
                 allowNull: false,
-            },
-            description: {
-                type: DataTypes.TEXT,
-                allowNull: true,
             },
             active: {
                 type: DataTypes.BOOLEAN,
@@ -68,9 +60,9 @@ module.exports.up = (queryInterface, DataTypes) => {
             },
         },
         {
-            charset: "utf8",
-        },
+            charset: 'utf8',
+        }
     );
 };
 
-module.exports.down = (queryInterface) => queryInterface.dropTable("users");
+module.exports.down = (queryInterface) => queryInterface.dropTable('users');

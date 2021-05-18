@@ -6,11 +6,9 @@ interface UserAttributes {
     user_id?: number;
     first_name: string;
     last_name: string;
-    phone: number;
     email: string;
     username: string;
     password: string;
-    description: string;
     active?: boolean;
     createdAt?: Date;
     updatedAt?: Date;
@@ -26,11 +24,9 @@ export class User extends Model<UserAttributes, UserCreationAttributes> implemen
     public user_id!: number; // Note that the `null assertion` `!` is required in strict mode.
     public first_name!: string;
     public last_name!: string;
-    public phone!: number;
     public email!: string;
     public username!: string;
     public password!: string;
-    public description!: string;
     public active!: boolean;
 
     // timestamps!
@@ -66,10 +62,6 @@ export default (sequelize: Sequelize): typeof User => {
                 type: DataTypes.STRING,
                 allowNull: false,
             },
-            phone: {
-                type: DataTypes.INTEGER.UNSIGNED,
-                allowNull: false,
-            },
             email: {
                 type: DataTypes.STRING,
                 allowNull: false,
@@ -77,10 +69,6 @@ export default (sequelize: Sequelize): typeof User => {
             password: {
                 type: DataTypes.STRING,
                 allowNull: false,
-            },
-            description: {
-                type: DataTypes.TEXT,
-                allowNull: true,
             },
             active: {
                 type: DataTypes.BOOLEAN,

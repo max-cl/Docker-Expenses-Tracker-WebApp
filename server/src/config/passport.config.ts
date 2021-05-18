@@ -48,9 +48,7 @@ passport.use(
                 const data: UserRegister = {
                     first_name: userInfo.first_name,
                     last_name: userInfo.last_name,
-                    phone: userInfo.phone,
                     email: userInfo.email,
-                    description: userInfo.description,
                     username: userInfo.username,
                     password: hashedPassword,
                     roles: userInfo.roles,

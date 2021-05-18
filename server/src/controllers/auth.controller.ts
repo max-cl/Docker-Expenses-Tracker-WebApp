@@ -44,8 +44,6 @@ export class AuthController {
                                 last_name: user.last_name,
                                 username: user.username,
                                 email: user.email,
-                                phone: user.phone,
-                                description: user.description,
                             },
                             message: 'User found & logged in',
                         }),
@@ -70,8 +68,6 @@ export class AuthController {
                                 last_name: user.last_name,
                                 username: user.username,
                                 email: user.email,
-                                phone: user.phone,
-                                description: user.description,
                             },
                             message: 'User found in db',
                         }),
@@ -88,16 +84,8 @@ export class AuthController {
             if (!JWTPassportErrors(res, err, info)) {
                 if (user.user_id === req.body.user_id) {
                     try {
-                        const { user_id, first_name, last_name, username, email, phone, description } = <UserUpdate>req.body;
-                        const userUpdated = await this.authService.updateUserInformation(
-                            user_id,
-                            first_name,
-                            last_name,
-                            username,
-                            email,
-                            parseInt(phone),
-                            description
-                        );
+                        const { user_id, first_name, last_name, username, email } = <UserUpdate>req.body;
+                        const userUpdated = await this.authService.updateUserInformation(user_id, first_name, last_name, username, email);
 
                         if (userUpdated[0] === 1) {
                             logger.info(`Username "${username}" was updated.`);

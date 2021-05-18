@@ -16,16 +16,14 @@ export class AuthService {
         await this.db.User.findOne({ where: { [Op.or]: [{ username }, { email }] } });
 
     public createUser = async (data: UserRegister) => {
-        const { first_name, last_name, phone, email, active, description, username, password } = data;
+        const { first_name, last_name, email, active, username, password } = data;
         return await this.db.User.create({
             first_name,
             last_name,
-            phone,
             username,
             password,
             email,
             active,
-            description,
         });
     };
 
@@ -37,17 +35,9 @@ export class AuthService {
 
     public getUserById = async (user_id: number) => await this.db.User.findOne({ where: { user_id } });
 
-    public updateUserInformation = async (
-        user_id: number,
-        first_name: string,
-        last_name: string,
-        username: string,
-        email: string,
-        phone: number,
-        description: string
-    ) =>
+    public updateUserInformation = async (user_id: number, first_name: string, last_name: string, username: string, email: string) =>
         await this.db.User.update(
-            { first_name, last_name, username, email, phone, description },
+            { first_name, last_name, username, email },
             {
                 where: {
                     user_id,
