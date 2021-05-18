@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
 // Components
-import LoginContainer from "../../components/Containers/Login";
+import LoginContainer from '../../components/Containers/Login';
 
 const Dashboard: React.FC<{}> = () => {
     return (

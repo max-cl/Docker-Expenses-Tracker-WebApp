@@ -1,65 +1,39 @@
-import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 
 export const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         container: {
-            margin: theme.spacing(1, 0),
-            display: "grid",
-            gridTemplateColumns: "repeat(1, 1fr)",
-            gridAutoRows: "624px",
-            gridTemplateAreas: `'card1'`,
-            gridGap: theme.spacing(1),
-            "&>:nth-child(1)": {
-                gridArea: "card1",
-            },
+            height: 592,
+            display: 'flex',
+            justifyContent: 'center',
         },
         card: {
             padding: theme.spacing(2),
+            height: '100%',
+            width: 'auto',
         },
-        info: {
-            display: "flex",
-            justifyContent: "space-between",
-            color: "white",
+        userInfoContainer: {
+            margin: theme.spacing(4, 0, 2),
         },
         typeInfo: {
-            fontWeight: 900,
+            fontWeight: 800,
         },
         cardDetail: {
-            maxWidth: "30%",
-            margin: "auto",
-            textAlign: "center",
-            color: "white",
+            textAlign: 'center',
+            padding: theme.spacing(2),
         },
-
+        imgUser: {
+            width: '50%',
+            borderRadius: '50%',
+        },
         title: {
-            fontSize: "18px",
+            margin: theme.spacing(0, 0, 2),
         },
-
-        aLink: {
-            textDecoration: "none",
-            fontSize: "22px",
-            color: "white",
+        buttonsContainer: {
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            flexDirection: 'column',
         },
-
-        /* ============================================== */
-        /* HDTV                                 1920x1080 */
-        /* ============================================== */
-        "@media screen and (min-width: 1680px) and (max-width: 1920px)": {
-            container: {
-                gridAutoRows: "896px",
-            },
-        },
-
-        "@media screen and (max-width: 1679px)": {
-            container: {
-                gridAutoRows: "624px",
-            },
-        },
-
-        "@media screen and (min-width: 400px) and (max-width: 899px)": {
-            cardDetail: {
-                maxWidth: "80%",
-            },
-        },
-    }),
+    })
 );

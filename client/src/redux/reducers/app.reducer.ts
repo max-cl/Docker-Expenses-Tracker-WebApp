@@ -1,4 +1,4 @@
-import { GET_APP_REQUEST, GET_APP_SUCCESS, CLEAR_APP_STATES, AppActionTypes, AppState, IAppData } from "../types/app";
+import { GET_APP_REQUEST, GET_APP_SUCCESS, CLEAR_APP_STATES, AppActionTypes, AppState, IAppData } from '../types/app';
 
 const initialState: AppState = {
     appData: {} as IAppData,

@@ -1,38 +1,38 @@
-import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import axios, { AxiosResponse } from "axios";
+import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import axios, { AxiosResponse } from 'axios';
 
 // Material UI
-import Typography from "@material-ui/core/Typography";
-import EditIcon from "@material-ui/icons/Edit";
-import AddIcon from "@material-ui/icons/Add";
+import Typography from '@material-ui/core/Typography';
+import EditIcon from '@material-ui/icons/Edit';
+import AddIcon from '@material-ui/icons/Add';
 
 // Components
-import FormEditProfile from "../../FormEditProfile";
-import FormAddBudget from "../../FormAddBudget";
-import Modal from "../../Common/Modal";
-import Button from "../../Common/Controls/Button";
-import Spinner from "../../Common/Spinner";
-import Card from "../../Common/Card";
+import FormEditProfile from '../../FormEditProfile';
+import FormAddBudget from '../../FormAddBudget';
+import Modal from '../../Common/Modal';
+import Button from '../../Common/Controls/Button';
+import Spinner from '../../Common/Spinner';
+import Card from '../../Common/Card';
 
 // Actions
-import { cleanAuthResponseSuccess } from "../../../redux/actions/auth.action";
+import { cleanAuthResponseSuccess } from '../../../redux/actions/auth.action';
 
 // Thunks
-import { updateUserInformation } from "../../../redux/thunks/auth.thunk";
-import { returnErrors, clearErrors, returnErrorsInputFields } from "../../../redux/thunks/error.thunk";
+import { updateUserInformation } from '../../../redux/thunks/auth.thunk';
+import { returnErrors, clearErrors, returnErrorsInputFields } from '../../../redux/thunks/error.thunk';
 
 // Types
-import { IProfileInfo, IAddBudget } from "./interfaces";
-import { RootState } from "../../../redux/reducers";
-import { FORGOT_PASSWORD_FAILURE } from "../../../redux/types/auth";
+import { IProfileInfo, IAddBudget } from './interfaces';
+import { RootState } from '../../../redux/reducers';
+import { FORGOT_PASSWORD_FAILURE } from '../../../redux/types/auth';
 
 // Styles
-import { useStyles } from "./styles";
+import { useStyles } from './styles';
 
 // APIs
-import { URL_ADD_BUDGET } from "../../../redux/apis";
+import { URL_ADD_BUDGET } from '../../../redux/apis';
 
 const Profile: React.FC<{}> = () => {
     // Material UI
@@ -46,15 +46,13 @@ const Profile: React.FC<{}> = () => {
     const [openUpdateInfo, setOpenUpdateInfo] = useState<boolean>(false);
     const [openAddBudget, setOpenAddBudget] = useState<boolean>(false);
     const [profileInfo, setProfileInfo] = useState<IProfileInfo>({
-        username: "",
-        first_name: "",
-        last_name: "",
-        email: "",
-        phone: "",
-        description: "",
+        username: '',
+        first_name: '',
+        last_name: '',
+        email: '',
     });
     const [newBudget, setNewBudget] = useState<IAddBudget>({ amount: 0, budget_date: new Date() });
-    const [newBudgetResponse, setNewBudgetResponse] = useState({ budgetStatus: 0, budgetMessage: "" });
+    const [newBudgetResponse, setNewBudgetResponse] = useState({ budgetStatus: 0, budgetMessage: '' });
 
     // Global States (Redux Store)
     const userInfo = useSelector((state: RootState) => state.auth.user);
@@ -66,7 +64,7 @@ const Profile: React.FC<{}> = () => {
 
     useEffect(() => {
         if (!isAuthenticated) {
-            history.push("/login");
+            history.push('/login');
         } else {
             if (Object.entries(userInfo).length > 0) {
             }
@@ -76,15 +74,15 @@ const Profile: React.FC<{}> = () => {
     const handleOnChangeBudget = (name: string, value: string) => setNewBudget({ ...newBudget, [name]: value });
     const handleDateChangeAddBudget = (value: Date | null) => setNewBudget({ ...newBudget, budget_date: value });
     const addNewBudget = () => {
-        setNewBudgetResponse({ budgetStatus: 0, budgetMessage: "" });
+        setNewBudgetResponse({ budgetStatus: 0, budgetMessage: '' });
         setNewBudget({ amount: 0, budget_date: new Date() });
         setOpenAddBudget(!openAddBudget);
     };
     const handleAddBudget = async () => {
         try {
-            setNewBudgetResponse({ budgetStatus: 0, budgetMessage: "" });
+            setNewBudgetResponse({ budgetStatus: 0, budgetMessage: '' });
             // Headers
-            const config = { headers: { "Content-Type": "application/json", Authorization: `JWT ${token}` } };
+            const config = { headers: { 'Content-Type': 'application/json', Authorization: `JWT ${token}` } };
             // Request body
             const body = JSON.stringify({ amount: newBudget.amount, budget_date: newBudget.budget_date, user_id: userInfo.user_id });
             dispatch(clearErrors());
@@ -95,7 +93,7 @@ const Profile: React.FC<{}> = () => {
             if (error.response === undefined) {
                 // network error
                 errorStatus = 500;
-                errorMessage = "Error: Network Error (Server is not running!)";
+                errorMessage = 'Error: Network Error (Server is not running!)';
                 dispatch(returnErrors(errorMessage, errorStatus, FORGOT_PASSWORD_FAILURE));
             } else {
                 // input fields error
@@ -115,34 +113,25 @@ const Profile: React.FC<{}> = () => {
 
     const handleUpdate = () => {
         dispatch(
-            updateUserInformation(
-                userInfo.user_id,
-                profileInfo.username,
-                profileInfo.first_name,
-                profileInfo.last_name,
-                profileInfo.email,
-                profileInfo.phone,
-                profileInfo.description,
-            ),
+            updateUserInformation(userInfo.user_id, profileInfo.username, profileInfo.first_name, profileInfo.last_name, profileInfo.email)
         );
     };
 
     const editProfileInfo = () => {
         dispatch(cleanAuthResponseSuccess());
+        dispatch(clearErrors());
         setOpenUpdateInfo(!openUpdateInfo);
         setProfileInfo({
             first_name: userInfo.first_name,
             last_name: userInfo.last_name,
             username: userInfo.username,
             email: userInfo.email,
-            phone: userInfo.phone,
-            description: userInfo.description,
         });
     };
 
     if (Object.keys(userInfo).length === 0) {
         return (
-            <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                 <Spinner />
             </div>
         );
@@ -171,53 +160,42 @@ const Profile: React.FC<{}> = () => {
                     />
                 </Modal>
                 <div className={classes.cardDetail}>
-                    <img src="https://fakeimg.pl/440x320/" alt="img" style={{ width: "100%" }} />
-                    <Button
-                        label="Edit Info"
-                        color="primary"
-                        isDisabled={false}
-                        onClick={editProfileInfo}
-                        btnType="button"
-                        icon={<EditIcon />}
-                    />
-                    <Button
-                        label="Add budget"
-                        color="primary"
-                        isDisabled={false}
-                        onClick={addNewBudget}
-                        btnType="button"
-                        icon={<AddIcon />}
-                    />
-                    <div>
-                        <Typography variant="h3">
+                    <img src="https://fakeimg.pl/440x320/" alt="User image" className={classes.imgUser} />
+
+                    <div className={classes.userInfoContainer}>
+                        <Typography variant="h3" className={classes.title}>
                             {userInfo.first_name} {userInfo.last_name}
                         </Typography>
-                        <div className={classes.info}>
-                            <Typography variant="subtitle1" className={classes.typeInfo}>
-                                Username:{" "}
+                        <div>
+                            <Typography variant="body2" className={classes.typeInfo}>
+                                Username:
                             </Typography>
                             <Typography variant="subtitle1">{userInfo.username}</Typography>
                         </div>
-                        <div className={classes.info}>
-                            <Typography variant="subtitle1" className={classes.typeInfo}>
-                                Email:{" "}
+                        <div>
+                            <Typography variant="body2" className={classes.typeInfo}>
+                                Email:
                             </Typography>
                             <Typography variant="subtitle1">{userInfo.email}</Typography>
                         </div>
-                        <div className={classes.info}>
-                            <Typography variant="subtitle1" className={classes.typeInfo}>
-                                Phone:{" "}
-                            </Typography>
-                            <Typography variant="subtitle1">{userInfo.phone}</Typography>
-                        </div>
-                        <div>
-                            <Typography variant="subtitle1" className={classes.typeInfo} style={{ textAlign: "left" }}>
-                                Description:
-                            </Typography>
-                            <Typography variant="subtitle1" style={{ textAlign: "justify" }}>
-                                {userInfo.description}
-                            </Typography>
-                        </div>
+                    </div>
+                    <div className={classes.buttonsContainer}>
+                        <Button
+                            label="Edit Info"
+                            color="primary"
+                            isDisabled={false}
+                            onClick={editProfileInfo}
+                            btnType="button"
+                            icon={<EditIcon />}
+                        />
+                        <Button
+                            label="Add budget"
+                            color="primary"
+                            isDisabled={false}
+                            onClick={addNewBudget}
+                            btnType="button"
+                            icon={<AddIcon />}
+                        />
                     </div>
                 </div>
             </Card>

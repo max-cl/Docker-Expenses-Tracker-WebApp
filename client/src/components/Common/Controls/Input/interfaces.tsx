@@ -13,4 +13,5 @@ export interface IProps<T> {
     errorMessage?: string;
     clearErrors: (fieldName: T) => void;
     multiline?: boolean;
+    disabled?: boolean;
 }

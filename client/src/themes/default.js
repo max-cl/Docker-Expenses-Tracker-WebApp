@@ -1,21 +1,29 @@
-import tinycolor from "tinycolor2";
+import tinycolor from 'tinycolor2';
 
-const primary = "#536DFE";
-const secondary = "#FF5C93";
-const warning = "#FFC260";
-const success = "#3CD4A0";
-const info = "#9013FE";
+const primary = '#08e5b9';
+const secondary = '#2e3346';
+// const primary = "#536DFE";
+// const secondary = '#FF5C93';
+const warning = '#FFC260';
+const success = '#3CD4A0';
+const info = '#9013FE';
 
 const lightenRate = 7.5;
 const darkenRate = 15;
 
-const primaryText = "#4A4A4A";
-const secondaryText = "#6E6E6E";
-const hintText = "#B9B9B9";
-const disabledText = "#9E9E9E";
+const primaryText = '#FFFFFF';
+const secondaryText = secondary;
+// const primaryText = '#4A4A4A';
+// const secondaryText = '#6E6E6E';
+const hintText = '#B9B9B9';
+const disabledText = '#9E9E9E';
 
-const bgDefault = "#F6F7FF";
-const bgLight = "#F3F5FF";
+const bgDefault = '#252837';
+const glassColor = 'linear-gradient(to right bottom, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.3))';
+// const bgDefault = '#F6F7FF';
+// const bgLight = '#F3F5FF';
+
+const inputBgColor = '#FFFFFF';
 
 const defaultTheme = {
     palette: {
@@ -28,7 +36,7 @@ const defaultTheme = {
             main: secondary,
             light: tinycolor(secondary).lighten(lightenRate).toHexString(),
             dark: tinycolor(secondary).darken(darkenRate).toHexString(),
-            contrastText: "#FFFFFF",
+            contrastText: '#FFFFFF',
         },
         warning: {
             main: warning,
@@ -53,38 +61,113 @@ const defaultTheme = {
         },
         background: {
             default: bgDefault,
-            light: bgLight,
+            paper: glassColor,
         },
     },
-    shadows: ["0 5px 5px rgba(0,0,0,.6)"],
+    shadows: ['0 5px 5px rgba(0,0,0,.6)'],
     overrides: {
+        MuiButton: {
+            root: {
+                color: secondary,
+                backgroundColor: primary,
+                fontWeight: 800,
+                borderRadius: 2,
+            },
+        },
         MuiInputBase: {
             input: {
-                color: primaryText,
+                color: secondaryText,
+                backgroundColor: inputBgColor,
+                borderRadius: 2,
+                fontSize: '1em',
+                inputMultiline: {
+                    '&:hover': {
+                        backgroundColor: inputBgColor,
+                    },
+                    '&:focus': {
+                        backgroundColor: inputBgColor,
+                    },
+                    '&:selected': {
+                        backgroundColor: inputBgColor,
+                    },
+                },
+            },
+        },
+        MuiFilledInput: {
+            root: {
+                backgroundColor: inputBgColor,
+                '&.Mui-focused': {
+                    backgroundColor: inputBgColor,
+                },
+                '&:hover': {
+                    backgroundColor: inputBgColor,
+                },
+            },
+            adornedEnd: {
+                paddingRight: 0,
+                '&:hover': {
+                    backgroundColor: inputBgColor,
+                },
+                '&:focus': {
+                    backgroundColor: inputBgColor,
+                },
+                '&:selected': {
+                    backgroundColor: inputBgColor,
+                },
             },
         },
         MuiFormLabel: {
             root: {
                 color: secondaryText,
+                fontSize: '1em',
+                '&.Mui-focused': {
+                    color: secondaryText,
+                },
             },
         },
         MuiSelect: {
             root: {
+                color: secondaryText,
+                backgroundColor: inputBgColor,
+            },
+        },
+        MuiListItem: {
+            root: {
                 color: primaryText,
+                backgroundColor: `${bgDefault} !important`,
+                '&:selected': {
+                    color: primaryText,
+                    backgroundColor: `${bgDefault} !important`,
+                },
             },
         },
         MuiMenuItem: {
             root: {
                 color: primaryText,
-                "&:focus": {
-                    color: primary,
+                backgroundColor: bgDefault,
+                '&:focus': {
+                    color: primaryText,
+                    backgroundColor: `${secondary} !important`,
                 },
-                "&:hover": {
-                    color: primary,
+                '&:hover': {
+                    color: primaryText,
+                    backgroundColor: `${secondary} !important`,
                 },
-                "&:selected": {
-                    color: primary,
+                '&:selected': {
+                    color: primaryText,
+                    backgroundColor: bgDefault,
                 },
+            },
+        },
+        MuiListItemIcon: {
+            root: {
+                color: '#FFFFFF',
+            },
+        },
+        MuiTableCell: {
+            head: {
+                color: `${secondary} !important`,
+                fontWeight: `600 !important`,
             },
         },
         // MuiSvgIcon: {
@@ -98,24 +181,24 @@ const defaultTheme = {
         },
         MuiPickersCalendarHeader: {
             switchHeader: {
-                color: "white",
+                color: 'white',
             },
             iconButton: {
-                backgroundColor: "transparent",
+                backgroundColor: 'transparent',
             },
             dayLabel: {
-                color: "white",
+                color: 'white',
             },
         },
         MuiPickersDay: {
             day: {
-                color: "white",
+                color: 'white',
             },
             daySelected: {
                 backgroundColor: primary,
             },
             dayDisabled: {
-                color: "gray",
+                color: 'gray',
             },
             current: {
                 color: tinycolor(primary).darken(darkenRate).toHexString(),
@@ -123,13 +206,13 @@ const defaultTheme = {
         },
         MuiPickersModal: {
             dialogAction: {
-                color: "white",
+                color: 'white',
             },
         },
         MuiPickersCalendar: {},
         MuiPickersBasePicker: {
             container: {
-                backgroundColor: "#24282f",
+                backgroundColor: '#24282f',
             },
         },
         /** End DatePicker */

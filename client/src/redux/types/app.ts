@@ -1,10 +1,10 @@
-export const GET_APP_REQUEST = "GET_APP_REQUEST";
-export const GET_APP_SUCCESS = "GET_APP_SUCCESS";
-export const GET_APP_FAILURE = "GET_APP_FAILURE";
-export const CLEAR_APP_STATES = "CLEAR_APP_STATES";
+export const GET_APP_REQUEST = 'GET_APP_REQUEST';
+export const GET_APP_SUCCESS = 'GET_APP_SUCCESS';
+export const GET_APP_FAILURE = 'GET_APP_FAILURE';
+export const CLEAR_APP_STATES = 'CLEAR_APP_STATES';
 
 export interface IAppData {
-    expenseCategories: any;
+    expenseCategories: {}[];
 }
 
 export interface AppState {

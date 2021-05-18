@@ -1,41 +1,46 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { useForm } from "react-hook-form";
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
 
 // Components
-import Form from "../Common/Controls/Form";
-import Input from "../Common/Controls/Input";
-import Button from "../Common/Controls/Button";
-import ServerError from "../Common/ServerError";
+import Form from '../Common/Controls/Form';
+import Input from '../Common/Controls/Input';
+import Button from '../Common/Controls/Button';
+import ServerError from '../Common/ServerError';
 
 // Material UI
-import Typography from "@material-ui/core/Typography";
-import VisibilityIcon from "@material-ui/icons/Visibility";
-import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
-import IconButton from "@material-ui/core/IconButton";
+import Typography from '@material-ui/core/Typography';
+import VisibilityIcon from '@material-ui/icons/Visibility';
+import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
+import IconButton from '@material-ui/core/IconButton';
 
 // Interfaces
-import { ILogin } from "./interfaces";
+import { ILogin } from './interfaces';
 
 // Utils
-import { addServerErrors } from "../utils";
+import { addServerErrors } from '../utils';
+
+// Styles
+import { useStyles } from './styles';
 
 const FormLogin: React.FC<ILogin> = ({ loginInfo, handleOnChange, handleLogin, errorInfo }) => {
+    // Styles
+    const classes = useStyles();
     // React Hook Form
     const { errors, setError, control, clearErrors } = useForm<typeof loginInfo>();
     // Local State
     const [visibilityPassword, setVisibilityPassword] = useState(false);
 
     useEffect(() => {
-        // Error mangement
-        clearErrors(["username", "password"]); // Clear "error" variable from React Hook Form
+        // Error management
+        clearErrors(['username', 'password']); // Clear "error" variable from React Hook Form
         if (Object.keys(errorInfo.inputFields).length > 0) {
             addServerErrors(errorInfo.inputFields, setError);
         }
     }, [errorInfo.inputFields, clearErrors, setError]);
 
     return (
-        <>
+        <div className={classes.FormContainer}>
             <Form onSubmit={handleLogin}>
                 <>
                     <ServerError error={{ id: errorInfo.id, status: errorInfo.status, message: errorInfo.message }} />
@@ -44,7 +49,7 @@ const FormLogin: React.FC<ILogin> = ({ loginInfo, handleOnChange, handleLogin, e
                         label="Username"
                         required={true}
                         isError={errors.username ? true : false}
-                        errorMessage={errors.username ? errors.username.message : ""}
+                        errorMessage={errors.username ? errors.username.message : ''}
                         handleOnChange={handleOnChange}
                         value={loginInfo.username}
                         adornment=""
@@ -59,7 +64,7 @@ const FormLogin: React.FC<ILogin> = ({ loginInfo, handleOnChange, handleLogin, e
                         label="Password"
                         required={true}
                         isError={errors.password ? true : false}
-                        errorMessage={errors.password ? errors.password.message : ""}
+                        errorMessage={errors.password ? errors.password.message : ''}
                         handleOnChange={handleOnChange}
                         value={loginInfo.password}
                         adornment={
@@ -68,27 +73,26 @@ const FormLogin: React.FC<ILogin> = ({ loginInfo, handleOnChange, handleLogin, e
                             </IconButton>
                         }
                         adornmentPosition="end"
-                        inputType={visibilityPassword ? "text" : "password"}
+                        inputType={visibilityPassword ? 'text' : 'password'}
                         errors={errors.password ? { password: errors.password } : {}}
                         control={control}
                         clearErrors={clearErrors}
                     />
-                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                        <Button label="Login" color="primary" isDisabled={false} btnType="submit" style={{ width: "50%" }} />
-                        <Typography
-                            variant="body1"
-                            color="primary"
-                            align="right"
-                            component={Link}
-                            to="/forgotpassword"
-                            style={{ textDecoration: "none" }}
-                        >
-                            Forgot password?
-                        </Typography>
-                    </div>
+
+                    <Button label="Login" color="primary" isDisabled={false} btnType="submit" />
+                    <Typography
+                        variant="body2"
+                        color="primary"
+                        align="right"
+                        component={Link}
+                        to="/forgotpassword"
+                        style={{ textDecoration: 'none', color: 'white', fontWeight: 500 }}
+                    >
+                        Forgot password?
+                    </Typography>
                 </>
             </Form>
-        </>
+        </div>
     );
 };
 

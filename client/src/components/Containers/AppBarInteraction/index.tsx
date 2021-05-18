@@ -1,29 +1,29 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
-import { Switch } from "react-router-dom";
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { Switch } from 'react-router-dom';
 
 // Pages
-import Dashboard from "../../../pages/Dashboard";
-import Expense from "../../../pages/Expenses";
-import Profile from "../../../pages/Profile";
+import Dashboard from '../../../pages/Dashboard';
+import Expense from '../../../pages/Expenses';
+import Profile from '../../../pages/Profile';
 
 // Components
-import MyDrawer from "../../Drawer";
-import MyToolBar from "../../ToolBar";
+import MyDrawer from '../../Drawer';
+import MyToolBar from '../../ToolBar';
 
 // Router
-import { PrivateRoute } from "../../../utils";
+import { PrivateRoute } from '../../../utils';
 
 // Styles
-import { useStyles } from "./styles";
+import { useStyles } from './styles';
 
 // Types
-import { RootState } from "../../../redux/reducers";
+import { RootState } from '../../../redux/reducers';
 
 const sectionsInfo = [
-    { label: "Dashboard", path: "/app/dashboard" },
-    { label: "Expenses", path: "/app/expenses" },
-    { label: "Profile", path: "/app/profile" },
+    { label: 'Dashboard', path: '/app/dashboard' },
+    { label: 'Expenses', path: '/app/expenses' },
+    { label: 'Profile', path: '/app/profile' },
 ];
 
 const AppBarInteraction: React.FC<{}> = () => {
@@ -31,7 +31,7 @@ const AppBarInteraction: React.FC<{}> = () => {
     const classes = useStyles();
     // Local States
     const [open, setOpen] = useState<boolean>(false);
-    const [title, setTitle] = useState<string>("Dashboard");
+    const [title, setTitle] = useState<string>('Dashboard');
     // Global States
     const userInfo = useSelector((state: RootState) => state.auth.user);
 

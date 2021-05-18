@@ -4,8 +4,6 @@ export interface IProps {
         last_name: string;
         username: string;
         email: string;
-        phone: string;
-        description: string;
     };
     handleOnChange: (name: string, value: string) => void;
     handleUpdate: () => void;

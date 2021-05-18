@@ -6,8 +6,6 @@ export interface IProps {
         password: string;
         repeat_password: string;
         email: string;
-        phone: string;
-        description: string;
         role_id: number;
     };
     handleOnChange: (name: string, value: string) => void;

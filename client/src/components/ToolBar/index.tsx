@@ -1,22 +1,22 @@
-import React, { useState } from "react";
-import clsx from "clsx";
+import React, { useState } from 'react';
+import clsx from 'clsx';
 
 // Material UI
-import CssBaseline from "@material-ui/core/CssBaseline";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
+import CssBaseline from '@material-ui/core/CssBaseline';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
 
 // Interface
-import { IProps } from "./interfaces";
+import { IProps } from './interfaces';
 
 // Styles
-import { useStyles } from "./styles";
+import { useStyles } from './styles';
 
 // Components
-import MenuAccount from "../MenuAccount";
+import MenuAccount from '../MenuAccount';
 
 const MyToolBar: React.FC<IProps> = ({ open, handleDrawer, title, fullName }) => {
     // Material UI
@@ -49,10 +49,10 @@ const MyToolBar: React.FC<IProps> = ({ open, handleDrawer, title, fullName }) =>
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Typography variant="h6" noWrap>
+                    <Typography variant="h6" style={{ fontWeight: 800 }} noWrap>
                         {title}
                     </Typography>
-                    <div style={{ position: "absolute", right: 72 }}>
+                    <div style={{ position: 'absolute', right: 72 }}>
                         <Typography variant="subtitle1">{fullName}</Typography>
                     </div>
                     <MenuAccount anchorEl={anchorEl} handleMenu={handleMenu} handleClose={handleClose} />

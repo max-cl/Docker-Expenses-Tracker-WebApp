@@ -1,46 +1,46 @@
-import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import axios, { AxiosResponse } from "axios";
+import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import axios, { AxiosResponse } from 'axios';
 // Components
-import FormLogin from "../../FormLogin";
-import FormRegisterUser from "../../FormRegisterUser";
-import Button from "../../Common/Controls/Button";
-import Modal from "../../Common/Modal";
+import FormLogin from '../../FormLogin';
+import FormRegisterUser from '../../FormRegisterUser';
+import Button from '../../Common/Controls/Button';
+import Modal from '../../Common/Modal';
 
 // Thunks
-import { login } from "../../../redux/thunks/auth.thunk";
-import { returnErrors, clearErrors, returnErrorsInputFields } from "../../../redux/thunks/error.thunk";
+import { login } from '../../../redux/thunks/auth.thunk';
+import { returnErrors, clearErrors, returnErrorsInputFields } from '../../../redux/thunks/error.thunk';
 
 // Reducers
-import { RootState } from "../../../redux/reducers";
+import { RootState } from '../../../redux/reducers';
 
 // Material UI
-import Typography from "@material-ui/core/Typography";
+import Typography from '@material-ui/core/Typography';
 
 // Types
-import { INewUser } from "./interfaces";
-import { FORGOT_PASSWORD_FAILURE } from "../../../redux/types/auth";
+import { INewUser } from './interfaces';
+import { FORGOT_PASSWORD_FAILURE } from '../../../redux/types/auth';
 
 // Styles
-import { useStyles } from "./styles";
+import { useStyles } from './styles';
 
 // APIs
-import { URL_SIGNUP } from "../../../redux/apis";
+import { URL_SIGNUP } from '../../../redux/apis';
 
 // Roles
 const dataOptions = [
     {
         category_id: 1,
-        category_name: "Admin",
+        category_name: 'Admin',
     },
     {
         category_id: 2,
-        category_name: "Role_1",
+        category_name: 'Role_1',
     },
     {
         category_id: 3,
-        category_name: "Role_2",
+        category_name: 'Role_2',
     },
 ];
 
@@ -60,20 +60,18 @@ const Login: React.FC<{}> = () => {
 
     // Local States
     const [openAddUser, setOpenAddUser] = useState<boolean>(false);
-    const [loginInfo, setLoginInfo] = useState({ username: "", password: "" });
+    const [loginInfo, setLoginInfo] = useState({ username: '', password: '' });
     const [newUser, setNewUser] = useState<INewUser>({
-        username: "",
-        password: "",
-        repeat_password: "",
-        first_name: "",
-        last_name: "",
-        email: "",
-        phone: "",
-        description: "",
-        roles: "",
+        username: '',
+        password: '',
+        repeat_password: '',
+        first_name: '',
+        last_name: '',
+        email: '',
+        roles: '',
         role_id: 0,
     });
-    const [newUserResponse, setNewUserResponse] = useState({ userMessage: "", userStatus: 0 });
+    const [newUserResponse, setNewUserResponse] = useState({ userMessage: '', userStatus: 0 });
 
     const handleOnChangeAddNewUser = (name: string, value: string) => {
         setNewUser({ ...newUser, [name]: value });
@@ -87,9 +85,9 @@ const Login: React.FC<{}> = () => {
     };
     const handleAddNewUser = async () => {
         try {
-            setNewUserResponse({ userMessage: "", userStatus: 0 });
+            setNewUserResponse({ userMessage: '', userStatus: 0 });
             // Headers
-            const config = { headers: { "Content-Type": "application/json" } };
+            const config = { headers: { 'Content-Type': 'application/json' } };
             // Request body
             const body = JSON.stringify({
                 username: newUser.username,
@@ -98,8 +96,6 @@ const Login: React.FC<{}> = () => {
                 password: newUser.password,
                 repeat_password: newUser.repeat_password,
                 email: newUser.email,
-                phone: newUser.phone,
-                description: newUser.description,
                 roles: newUser.roles,
             });
             dispatch(clearErrors());
@@ -110,7 +106,7 @@ const Login: React.FC<{}> = () => {
             if (error.response === undefined) {
                 // network error
                 errorStatus = 500;
-                errorMessage = "Error: Network Error (Server is not running!)";
+                errorMessage = 'Error: Network Error (Server is not running!)';
                 dispatch(returnErrors(errorMessage, errorStatus, FORGOT_PASSWORD_FAILURE));
             } else {
                 // input fields error
@@ -128,18 +124,16 @@ const Login: React.FC<{}> = () => {
 
     const openModalAddUser = () => {
         setNewUser({
-            username: "",
-            password: "",
-            repeat_password: "",
-            first_name: "",
-            last_name: "",
-            email: "",
-            phone: "",
-            description: "",
-            roles: "",
+            username: '',
+            password: '',
+            repeat_password: '',
+            first_name: '',
+            last_name: '',
+            email: '',
+            roles: '',
             role_id: 0,
         });
-        setNewUserResponse({ userMessage: "", userStatus: 0 });
+        setNewUserResponse({ userMessage: '', userStatus: 0 });
         setOpenAddUser(!openAddUser);
     };
 
@@ -152,17 +146,14 @@ const Login: React.FC<{}> = () => {
 
     useEffect(() => {
         if (isAuthenticated) {
-            history.push("/app/dashboard");
+            history.push('/app/dashboard');
         }
     }, [isAuthenticated, history]);
 
     return (
         <>
-            <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "40%" }}>
-                <Typography variant="h1" className={classes.greeting}>
-                    Welcome
-                </Typography>
-                <div style={{ position: "absolute", right: "2%", top: "2%" }}>
+            <div style={{ padding: '2em', height: '20%' }}>
+                <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
                     <Modal open={openAddUser} handleModal={() => setOpenAddUser(!openAddUser)}>
                         <FormRegisterUser
                             newUser={newUser}
@@ -176,8 +167,11 @@ const Login: React.FC<{}> = () => {
                     </Modal>
                     <Button label="SignUp" color="primary" isDisabled={false} btnType="button" onClick={openModalAddUser} />
                 </div>
+                <Typography variant="h2" className={classes.greeting}>
+                    Welcome
+                </Typography>
             </div>
-            <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '2em' }}>
                 <FormLogin loginInfo={loginInfo} handleOnChange={handleOnChange} handleLogin={handleLogin} errorInfo={errorInfo} />
             </div>
         </>

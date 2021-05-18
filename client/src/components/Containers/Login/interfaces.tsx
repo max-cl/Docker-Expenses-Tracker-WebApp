@@ -5,8 +5,6 @@ export interface INewUser {
     password: string;
     repeat_password: string;
     email: string;
-    phone: string;
-    description: string;
     roles: string;
     role_id: number;
 }
