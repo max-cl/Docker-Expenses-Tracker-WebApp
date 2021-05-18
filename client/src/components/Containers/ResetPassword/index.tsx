@@ -1,33 +1,36 @@
-import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import axios, { AxiosResponse } from "axios";
+import React, { useState, useEffect } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import axios, { AxiosResponse } from 'axios';
 
 // Material UI
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
 
 // Components
-import Spinner from "../../Common/Spinner";
-import Button from "../../Common/Controls/Button";
-import FormUpdatePassword from "../../FormUpdatePassword";
+import Spinner from '../../Common/Spinner';
+import Button from '../../Common/Controls/Button';
+import FormUpdatePassword from '../../FormUpdatePassword';
 
 // Constants
-import { URL_RESET_PASSWORD, URL_UPDATE_PASSWORD } from "../../../redux/apis";
+import { URL_RESET_PASSWORD, URL_UPDATE_PASSWORD } from '../../../redux/apis';
 
 // Actions
-import { returnErrors, clearErrors, returnErrorsInputFields } from "../../../redux/thunks/error.thunk";
+import { clearErrors } from '../../../redux/thunks/error.thunk';
 
 // Styles
-import { useStyles } from "./styles";
+import { useStyles } from './styles';
 
 // Types
-import { RootState } from "../../../redux/reducers";
-import { UPDATE_PASSWORD_FAILURE } from "../../../redux/types/auth";
+import { RootState } from '../../../redux/reducers';
+import { UPDATE_PASSWORD_FAILURE } from '../../../redux/types/auth';
+
+// Utils
+import { errorManagment } from '../../../utils';
 
 const title = {
-    pageTitle: "Password Update",
+    pageTitle: 'Password Update',
 };
 
 const ResetPassword: React.FC<{}> = () => {
@@ -37,11 +40,11 @@ const ResetPassword: React.FC<{}> = () => {
     const dispatch = useDispatch();
 
     // Local States
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState({ password: "", repeat_password: "" });
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState({ password: '', repeat_password: '' });
     const [updated, setUpdated] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
-    const [messageFromServer, setMessageFromServer] = useState("");
+    const [messageFromServer, setMessageFromServer] = useState('');
     const [statusResponse, setStatusResponse] = useState(0);
 
     // Global States
@@ -74,9 +77,9 @@ const ResetPassword: React.FC<{}> = () => {
     const handleSubmit = async () => {
         try {
             setStatusResponse(0);
-            setMessageFromServer("");
+            setMessageFromServer('');
             // Headers
-            const config = { headers: { "Content-Type": "application/json" } };
+            const config = { headers: { 'Content-Type': 'application/json' } };
             dispatch(clearErrors());
             const response = await axios.put<AxiosResponse>(
                 `${URL_UPDATE_PASSWORD}`,
@@ -86,28 +89,12 @@ const ResetPassword: React.FC<{}> = () => {
                     repeat_password: password.repeat_password,
                     resetpasswordtoken: token,
                 },
-                config,
+                config
             );
             setStatusResponse(response.status);
             setMessageFromServer(response.data.data);
         } catch (error) {
-            let errorStatus, errorMessage;
-            if (error.response === undefined) {
-                // network error
-                errorStatus = 500;
-                errorMessage = "Error: Network Error (Server is not running!)";
-                dispatch(returnErrors(errorMessage, errorStatus, UPDATE_PASSWORD_FAILURE));
-            } else {
-                // input fields error
-                errorStatus = error.response.status;
-                if (!error.response.data.success && error.response.data.errors) {
-                    dispatch(returnErrorsInputFields(error.response.data.errors, errorStatus, UPDATE_PASSWORD_FAILURE));
-                } else if (error.response.data.message === undefined) {
-                    // server errors (User not found, Password not match, etc.)
-                    errorMessage = error.response.data.data;
-                    dispatch(returnErrors(errorMessage, errorStatus, UPDATE_PASSWORD_FAILURE));
-                }
-            }
+            errorManagment(error, dispatch, UPDATE_PASSWORD_FAILURE);
         }
     };
 
@@ -118,9 +105,11 @@ const ResetPassword: React.FC<{}> = () => {
     return (
         <>
             <div>
-                <AppBar position="static">
+                <AppBar position="static" className={classes.appBar}>
                     <Toolbar>
-                        <Typography variant="h6">{title.pageTitle || "Page Title Placeholder"}</Typography>
+                        <Typography variant="h6" className={classes.titleAppBar}>
+                            {title.pageTitle || 'Page Title Placeholder'}
+                        </Typography>
                     </Toolbar>
                 </AppBar>
             </div>
@@ -147,7 +136,7 @@ const ResetPassword: React.FC<{}> = () => {
             )}
 
             {isLoading && (
-                <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                     <Spinner />
                 </div>
             )}

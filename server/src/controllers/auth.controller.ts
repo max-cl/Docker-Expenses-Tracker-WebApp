@@ -115,12 +115,14 @@ export class AuthController {
                     logger.info('sending mail...');
                     const transporter = createTransporterEmail('gmail');
                     sendMail(transporter, forgotPasswordMailOptions(email, token), email, res);
+                } else {
+                    logger.error('Error trying to create the token for reseting password.');
+                    return apiResponse(res, failedResponse('Error trying to create the token for reseting password.'), 400);
                 }
-                logger.error('Error trying to create the token for reseting password.');
-                return apiResponse(res, failedResponse('Error trying to create the token for reseting password.'), 400);
+            } else {
+                logger.error(`Email doesnt exist: ${email}`);
+                return apiResponse(res, failedResponse('Email is not recognized. Please try again or register for a new account.'), 404);
             }
-            logger.error(`Email doesnt exist: ${email}`);
-            return apiResponse(res, failedResponse('Email is not recognized. Please try again or register for a new account.'), 404);
         } catch (error) {
             logger.error('Error trying to create the token for reseting password.', { meta: { ...error } });
             return apiResponse(res, failedResponse(error), 400);

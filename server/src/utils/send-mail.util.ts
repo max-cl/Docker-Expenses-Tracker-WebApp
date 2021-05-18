@@ -4,7 +4,7 @@ import nodemailer from 'nodemailer';
 import Mail from 'nodemailer/lib/mailer';
 
 // Utils
-import { apiResponse, successResponse } from 'utils/response.util';
+import { apiResponse, successResponse, failedResponse } from 'utils/response.util';
 
 // Interfaces
 import { ImailOptions } from 'interfaces/auth.interface';
@@ -24,8 +24,8 @@ export const createTransporterEmail = (serviceType: string) => {
 export const sendMail = (transporter: Mail, mailOptions: ImailOptions, email: string, res: Response) =>
     transporter.sendMail(mailOptions, (error, response) =>
         error
-            ? console.error(`Error sending email: ${error}`)
-            : apiResponse(res, successResponse(`Email has been sent to you (${email}),for reseting your password`), 200)
+            ? apiResponse(res, failedResponse('Error sending email... :('), 400)
+            : apiResponse(res, successResponse(`Email has been sent to you (${email}), for reseting your password`), 200)
     );
 
 /** TODO: Standard MailOptions  */
