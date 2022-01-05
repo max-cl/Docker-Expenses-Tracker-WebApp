@@ -1,6 +1,6 @@
-import { QueryTypes } from 'sequelize';
+import { QueryTypes } from "sequelize";
 // Models
-import { DB } from 'models';
+import { DB } from "models";
 
 // Interface
 import {
@@ -16,7 +16,7 @@ import {
     IWeeksOfTheYearDataReturn,
     ICurrentWeekDataReturn,
     ITotalMonthsYearlyDataReturn,
-} from 'interfaces/dashboard.interface';
+} from "interfaces/dashboard.interface";
 
 export class DashboardService {
     constructor(private db: DB) {}
@@ -58,7 +58,7 @@ export class DashboardService {
 
     public getMostSpending = async (user_id: number): Promise<IMostSpendingData[]> => {
         const data: IMostSpendingData[] = await this.db.sequelize.query(
-            `SELECT MAX(amount) AS amount, expense_name AS title, CONCAT('Most Spending in ', MONTHNAME(now())) AS description, 
+            `SELECT MAX(amount) AS amount, expense_name AS title, CONCAT('Biggest Spending in ', MONTHNAME(now())) AS description, 
                 '/images/expensive2.svg' AS imgpath 
                 FROM expenses WHERE user_id = ${user_id} AND DATE_FORMAT(expense_date,'%Y-%m') = DATE_FORMAT(now(),'%Y-%m') 
                 GROUP BY title ORDER BY amount DESC LIMIT 1;`,
@@ -84,7 +84,7 @@ export class DashboardService {
             value: data.map((d) => d.amount),
             labels: data.map((d) => d.category_name),
             title: `Top 5 Categories [${year}]`,
-            label: 'Categories',
+            label: "Categories",
         };
     };
 
@@ -103,7 +103,7 @@ export class DashboardService {
         return {
             value: data.map((d) => d.amount),
             labels: data.map((d) => `Week ${d.week}`),
-            title: 'All Weeks Total ($)',
+            title: "All Weeks Total ($)",
             label: `${year}`,
         };
     };
@@ -128,7 +128,7 @@ export class DashboardService {
         return {
             value: data.map((d) => d.amount),
             labels: data.map((d) => `${d.day}-${month}`),
-            title: 'Current Week',
+            title: "Current Week",
             label: `Week ${week} [${year}]`,
         };
     };
@@ -154,8 +154,9 @@ export class DashboardService {
 
     /** BUDGET DATA */
     public getCurrentMonthBudget = async (user_id: number) => {
-        const data: { amount: number; title: string; description: Buffer; imgpath: string }[] = await this.db.sequelize.query(
-            `SELECT (a.total - b.total) AS amount, CONCAT(MONTHNAME(now()),' ','Budget') AS title, CONCAT('Inital budget $',
+        const data: { amount: number; title: string; description: Buffer; imgpath: string }[] =
+            await this.db.sequelize.query(
+                `SELECT (a.total - b.total) AS amount, CONCAT(MONTHNAME(now()),' ','Budget') AS title, CONCAT('Inital budget $',
                 SUM(a.total)) AS description, 
                 "/images/budget.svg" AS imgpath FROM( 
                     ( SELECT SUM(amount) AS total, DATE_FORMAT(budget_date,'%Y-%m') AS budget_date FROM budget 
@@ -164,8 +165,8 @@ export class DashboardService {
                     (SELECT SUM(amount) AS total, DATE_FORMAT(expense_date,'%Y-%m') AS expense_date FROM expenses WHERE user_id = ${user_id} 
                     AND DATE_FORMAT(expense_date,'%Y-%m')=DATE_FORMAT(now(),'%Y-%m') GROUP BY DATE_FORMAT(expense_date,'%Y-%m'))b  
                 ) GROUP BY amount`,
-            { type: QueryTypes.SELECT }
-        );
+                { type: QueryTypes.SELECT }
+            );
 
         return data.length === 0
             ? []
@@ -173,7 +174,7 @@ export class DashboardService {
                   {
                       amount: data[0].amount,
                       title: data[0].title,
-                      description: data[0].description.toString('utf8'),
+                      description: data[0].description.toString("utf8"),
                       imgpath: data[0].imgpath,
                   },
               ];

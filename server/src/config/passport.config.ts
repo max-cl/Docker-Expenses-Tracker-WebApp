@@ -1,21 +1,21 @@
-import 'dotenv/config';
-import { Request } from 'express';
-import passport from 'passport';
-import { Strategy } from 'passport-local';
-import { Strategy as StrategyJwt, ExtractJwt } from 'passport-jwt';
+import "dotenv/config";
+import { Request } from "express";
+import passport from "passport";
+import { Strategy } from "passport-local";
+import { Strategy as StrategyJwt, ExtractJwt } from "passport-jwt";
 
 // Utils
-import { logger } from 'utils/logger.util';
+import { logger } from "utils/logger.util";
 
 // Models
-import { db } from 'models';
+import { db } from "models";
 
 // Services
-import { AuthService } from 'services/auth.service';
+import { AuthService } from "services/auth.service";
 
 // Interfaces
-import { UserLogin, UserRegister } from 'interfaces/auth.interface';
-import { encriptPassword, isEqualsPassword } from 'utils/encripter.util';
+import { UserLogin, UserRegister } from "interfaces/auth.interface";
+import { encriptPassword, isEqualsPassword } from "utils/encripter.util";
 
 // ENV Variables
 const jwtSecret = process.env.JWT_SECRET;
@@ -27,17 +27,17 @@ const ExtractJWT = ExtractJwt;
 const authService = new AuthService(db);
 
 passport.use(
-    'register',
+    "register",
     new LocalStrategy(
         {
-            usernameField: 'username',
-            passwordField: 'password',
+            usernameField: "username",
+            passwordField: "password",
             passReqToCallback: true,
             session: false,
         },
         async (req: Request, username: string, password: string, done) => {
             try {
-                logger.info('SignUp...');
+                logger.info("SignUp...");
                 const user = await authService.getUserByUsername(username);
                 if (user != null) {
                     logger.warn(`the username ${username} already exists`);
@@ -61,7 +61,7 @@ passport.use(
                 logger.info(`User ${userCreated.username} created`);
                 return done(null, userCreated);
             } catch (error) {
-                logger.error('Error while register', { meta: { ...error } });
+                logger.error("Error while register", { meta: { ...(error as object) } });
                 return done(error);
             }
         }
@@ -69,32 +69,32 @@ passport.use(
 );
 
 passport.use(
-    'login',
+    "login",
     new LocalStrategy(
         {
-            usernameField: 'username',
-            passwordField: 'password',
+            usernameField: "username",
+            passwordField: "password",
             session: false,
         },
         async (username: string, password: string, done) => {
             try {
                 const userInfo: UserLogin = { username, password };
-                logger.info('SignIn...');
+                logger.info("SignIn...");
                 const user = await authService.getUserByUsername(userInfo.username);
                 if (user === null) {
-                    logger.warn('User not found');
-                    return done(null, false, { message: 'User not found' });
+                    logger.warn("User not found");
+                    return done(null, false, { message: "User not found" });
                 }
                 const passwordChecked = await isEqualsPassword(userInfo.password, user.password);
                 if (passwordChecked !== true) {
-                    logger.warn('Passwords do not match');
-                    return done(null, false, { message: 'You’ve entered an invalid username or password' });
+                    logger.warn("Passwords do not match");
+                    return done(null, false, { message: "You’ve entered an invalid username or password" });
                 }
 
-                logger.info('User found & authenticated');
+                logger.info("User found & authenticated");
                 return done(null, user);
             } catch (error) {
-                logger.error('Error while login', { meta: { ...error } });
+                logger.error("Error while login", { meta: { ...(error as object) } });
                 return done(error);
             }
         }
@@ -102,23 +102,23 @@ passport.use(
 );
 
 const opts = {
-    jwtFromRequest: ExtractJWT.fromAuthHeaderWithScheme('JWT'),
+    jwtFromRequest: ExtractJWT.fromAuthHeaderWithScheme("JWT"),
     secretOrKey: jwtSecret,
 };
 
 passport.use(
-    'jwt',
+    "jwt",
     new JWTstrategy(opts, async (jwt_payload, done) => {
         try {
             const user = await authService.getUserById(jwt_payload.user_id);
             if (user) {
-                logger.info('User found in db in passport');
+                logger.info("User found in db in passport");
                 return done(null, user);
             }
-            logger.info('User not found in db');
+            logger.info("User not found in db");
             return done(null, false);
         } catch (error) {
-            logger.error('Error while token validation', { meta: { ...error } });
+            logger.error("Error while token validation", { meta: { ...(error as object) } });
             done(error);
         }
     })
