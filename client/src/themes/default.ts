@@ -16,9 +16,10 @@ const secondaryText = secondary;
 const hintText = '#B9B9B9';
 const disabledText = '#9E9E9E';
 
-const bgDefault = '#252837';
+// const bgDefault = '#252837';
+const bgDefault = '#24282F';
 const glassColor = 'linear-gradient(to right bottom, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.3))';
-const bgDark = '#24282F';
+// const bgDark = '#24282F';
 
 const inputBgColor = '#FFFFFF';
 
@@ -59,7 +60,6 @@ const defaultTheme: ThemeOptions = {
         background: {
             default: bgDefault,
             paper: glassColor,
-            dark: bgDark,
         },
     },
 

@@ -4,7 +4,7 @@ export const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         root: {
             width: '100%',
-            backgroundColor: theme.palette.background.dark,
+            backgroundColor: theme.palette.background.default,
             overflow: 'hidden',
             transformOrigin: 'center top',
             transformStyle: 'preserve-3d',
