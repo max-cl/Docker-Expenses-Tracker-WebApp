@@ -4,11 +4,7 @@ import React from 'react';
 import LoginContainer from '../../components/Containers/Login';
 
 const Dashboard: React.FC<{}> = () => {
-    return (
-        <>
-            <LoginContainer />
-        </>
-    );
+    return <LoginContainer />;
 };
 
 export default Dashboard;

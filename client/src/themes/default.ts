@@ -1,9 +1,8 @@
 import tinycolor from 'tinycolor2';
+import { ThemeOptions } from '@material-ui/core';
 
 const primary = '#08e5b9';
 const secondary = '#2e3346';
-// const primary = "#536DFE";
-// const secondary = '#FF5C93';
 const warning = '#FFC260';
 const success = '#3CD4A0';
 const info = '#9013FE';
@@ -13,19 +12,17 @@ const darkenRate = 15;
 
 const primaryText = '#FFFFFF';
 const secondaryText = secondary;
-// const primaryText = '#4A4A4A';
-// const secondaryText = '#6E6E6E';
+
 const hintText = '#B9B9B9';
 const disabledText = '#9E9E9E';
 
 const bgDefault = '#252837';
 const glassColor = 'linear-gradient(to right bottom, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.3))';
-// const bgDefault = '#F6F7FF';
-// const bgLight = '#F3F5FF';
+const bgDark = '#24282F';
 
 const inputBgColor = '#FFFFFF';
 
-const defaultTheme = {
+const defaultTheme: ThemeOptions = {
     palette: {
         primary: {
             main: primary,
@@ -62,9 +59,10 @@ const defaultTheme = {
         background: {
             default: bgDefault,
             paper: glassColor,
+            dark: bgDark,
         },
     },
-    shadows: ['0 5px 5px rgba(0,0,0,.6)'],
+
     overrides: {
         MuiButton: {
             root: {
@@ -167,14 +165,9 @@ const defaultTheme = {
         MuiTableCell: {
             head: {
                 color: `${secondary} !important`,
-                fontWeight: `600 !important`,
+                fontWeight: 600,
             },
         },
-        // MuiSvgIcon: {
-        //     root: {
-        //         color: tinycolor(primary).lighten(lightenRate).toHexString(),
-        //     },
-        // },
         /** Start DatePciker */
         MuiPickersToolbar: {
             toolbar: {},
@@ -205,7 +198,7 @@ const defaultTheme = {
             },
         },
         MuiPickersModal: {
-            dialogAction: {
+            withAdditionalAction: {
                 color: 'white',
             },
         },

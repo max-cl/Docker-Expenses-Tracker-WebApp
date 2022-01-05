@@ -29,9 +29,7 @@ import { UPDATE_PASSWORD_FAILURE } from '../../../redux/types/auth';
 // Utils
 import { errorManagment } from '../../../utils';
 
-const title = {
-    pageTitle: 'Password Update',
-};
+const pageTitle = 'Password Update';
 
 const ResetPassword: React.FC<{}> = () => {
     // Material UI styles
@@ -53,26 +51,7 @@ const ResetPassword: React.FC<{}> = () => {
     // Route Params
     const { token } = useParams<{ token: string }>();
 
-    const sendResetPassword = async () => {
-        try {
-            const response = await axios.get<AxiosResponse>(`${URL_RESET_PASSWORD}/${token}`);
-            if (response.status === 200) {
-                setUsername(response.data.data.username);
-                setUpdated(false);
-                setIsLoading(false);
-            }
-        } catch (error) {
-            console.log({ error });
-            setUpdated(false);
-            setIsLoading(false);
-            setStatusResponse(error.response.status);
-            setMessageFromServer(error.response.data.data);
-        }
-    };
-
-    const handleOnChange = (name: string, value: string) => {
-        setPassword({ ...password, [name]: value });
-    };
+    const handleOnChange = (name: string, value: string) => setPassword({ ...password, [name]: value });
 
     const handleSubmit = async () => {
         try {
@@ -89,7 +68,7 @@ const ResetPassword: React.FC<{}> = () => {
                     repeat_password: password.repeat_password,
                     resetpasswordtoken: token,
                 },
-                config
+                config,
             );
             setStatusResponse(response.status);
             setMessageFromServer(response.data.data);
@@ -99,8 +78,24 @@ const ResetPassword: React.FC<{}> = () => {
     };
 
     useEffect(() => {
+        const sendResetPassword = async () => {
+            try {
+                const response = await axios.get<AxiosResponse>(`${URL_RESET_PASSWORD}/${token}`);
+                if (response.status === 200) {
+                    setUsername(response.data.data.username);
+                    setUpdated(false);
+                    setIsLoading(false);
+                }
+            } catch (error) {
+                console.log({ error });
+                setUpdated(false);
+                setIsLoading(false);
+                setStatusResponse(error.response.status);
+                setMessageFromServer(error.response.data.data);
+            }
+        };
         sendResetPassword();
-    }, []);
+    }, [token]);
 
     return (
         <>
@@ -108,7 +103,7 @@ const ResetPassword: React.FC<{}> = () => {
                 <AppBar position="static" className={classes.appBar}>
                     <Toolbar>
                         <Typography variant="h6" className={classes.titleAppBar}>
-                            {title.pageTitle || 'Page Title Placeholder'}
+                            {pageTitle || 'Page Title Placeholder'}
                         </Typography>
                     </Toolbar>
                 </AppBar>

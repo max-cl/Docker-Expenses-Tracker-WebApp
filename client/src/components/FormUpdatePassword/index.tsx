@@ -1,25 +1,30 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { useForm } from "react-hook-form";
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
 
 // Components
-import Form from "../Common/Controls/Form";
-import Input from "../Common/Controls/Input";
-import Button from "../Common/Controls/Button";
-import ServerError from "../Common/ServerError";
+import Form from '../Common/Controls/Form';
+import Input from '../Common/Controls/Input';
+import Button from '../Common/Controls/Button';
+import ServerError from '../Common/ServerError';
 
 // Material-UI
-import VisibilityIcon from "@material-ui/icons/Visibility";
-import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
-import IconButton from "@material-ui/core/IconButton";
+import VisibilityIcon from '@material-ui/icons/Visibility';
+import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
+import IconButton from '@material-ui/core/IconButton';
 
 // Interfaces
-import { IProps } from "./interfaces";
+import { IProps } from './interfaces';
 
 // Utils
-import { addServerErrors } from "../utils";
+import { addServerErrors } from '../utils';
+
+// Styles
+import { useStyles } from './styles';
 
 const FormUpdatePassword: React.FC<IProps> = ({ data, handleOnChange, handleSubmit, errorInfo }) => {
+    // Styles
+    const classes = useStyles();
     // React Hook Form
     const { errors, setError, control, clearErrors } = useForm<typeof data>();
 
@@ -35,7 +40,7 @@ const FormUpdatePassword: React.FC<IProps> = ({ data, handleOnChange, handleSubm
     }, [errorInfo.inputFields, clearErrors, setError]);
 
     return (
-        <>
+        <div className={classes.FormContainer}>
             <Form onSubmit={handleSubmit}>
                 <>
                     <ServerError error={{ id: errorInfo.id, status: errorInfo.status, message: errorInfo.message }} />
@@ -44,7 +49,7 @@ const FormUpdatePassword: React.FC<IProps> = ({ data, handleOnChange, handleSubm
                         label="New Password"
                         required={true}
                         isError={errors.password ? true : false}
-                        errorMessage={errors.password ? errors.password.message : ""}
+                        errorMessage={errors.password ? errors.password.message : ''}
                         handleOnChange={handleOnChange}
                         value={data.password}
                         adornment={
@@ -60,7 +65,7 @@ const FormUpdatePassword: React.FC<IProps> = ({ data, handleOnChange, handleSubm
                             </IconButton>
                         }
                         adornmentPosition="end"
-                        inputType={visibilityPassword.visibilityPassword ? "text" : "password"}
+                        inputType={visibilityPassword.visibilityPassword ? 'text' : 'password'}
                         errors={errors.password ? { password: errors.password } : {}}
                         control={control}
                         clearErrors={clearErrors}
@@ -70,7 +75,7 @@ const FormUpdatePassword: React.FC<IProps> = ({ data, handleOnChange, handleSubm
                         label="Repeat Password"
                         required={true}
                         isError={errors.repeat_password ? true : false}
-                        errorMessage={errors.repeat_password ? errors.repeat_password.message : ""}
+                        errorMessage={errors.repeat_password ? errors.repeat_password.message : ''}
                         handleOnChange={handleOnChange}
                         value={data.repeat_password}
                         adornment={
@@ -86,19 +91,19 @@ const FormUpdatePassword: React.FC<IProps> = ({ data, handleOnChange, handleSubm
                             </IconButton>
                         }
                         adornmentPosition="end"
-                        inputType={visibilityPassword.visibilityRepeatPassword ? "text" : "password"}
+                        inputType={visibilityPassword.visibilityRepeatPassword ? 'text' : 'password'}
                         errors={errors.repeat_password ? { repeat_password: errors.repeat_password } : {}}
                         control={control}
                         clearErrors={clearErrors}
                     />
 
-                    <div>
+                    <>
                         <Button label="Update Password" color="primary" isDisabled={false} btnType="submit" />
                         <Button label="Back home" color="secondary" isDisabled={false} btnType="button" component={Link} to="/login" />
-                    </div>
+                    </>
                 </>
             </Form>
-        </>
+        </div>
     );
 };
 

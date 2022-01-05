@@ -11,8 +11,7 @@ export const useStyles = makeStyles((theme: Theme) =>
             textAlign: 'left',
             margin: theme.spacing(0),
             color: theme.palette.error.main,
-            fontWeight: theme.typography.fontWeightMedium,
-            fontSize: 12,
+            fontSize: '0.75rem',
         },
-    })
+    }),
 );

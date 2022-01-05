@@ -1,15 +1,15 @@
-import React from "react";
+import React from 'react';
 
 // Material UI
-import CardContent from "@material-ui/core/CardContent";
-import Typography from "@material-ui/core/Typography";
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
 
 // Components
-import Card from "../Common/Card";
-import Spinner from "../Common/Spinner";
+import Card from '../Common/Card';
+import Spinner from '../Common/Spinner';
 
 // Styles
-import { useStyles } from "./styles";
+import { useStyles } from './styles';
 
 export interface IProps {
     [key: string]: {
@@ -20,7 +20,7 @@ export interface IProps {
     }[];
 }
 
-const imgpath_NO_DATA_FOUND = "/images/no_data_found.svg";
+const imgpath_NO_DATA_FOUND = '/images/no_data_found.svg';
 
 const OverviewCard: React.FC<IProps> = ({ data }) => {
     // Material UI
@@ -28,7 +28,7 @@ const OverviewCard: React.FC<IProps> = ({ data }) => {
 
     if (data.length === 0) {
         return (
-            <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+            <div className={classes.containerSpinner}>
                 <Spinner />
             </div>
         );
@@ -40,11 +40,11 @@ const OverviewCard: React.FC<IProps> = ({ data }) => {
                 <>
                     {d === undefined ? (
                         <Card key={index} customClasses={classes.card}>
-                            <CardContent style={{ width: "100%" }}>
+                            <CardContent>
                                 <Typography variant="subtitle1" color="textPrimary" component="h3" align="center">
                                     NO DATA FOUND
                                 </Typography>
-                                <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+                                <div className={classes.containerNotFound}>
                                     <img
                                         src={process.env.PUBLIC_URL + `${imgpath_NO_DATA_FOUND}`}
                                         className={classes.image}

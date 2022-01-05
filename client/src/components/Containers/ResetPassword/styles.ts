@@ -19,11 +19,11 @@ export const useStyles = makeStyles((theme: Theme) =>
             '&::after': {
                 content: '""',
                 position: 'absolute',
-                borderBottom: `3px solid ${theme.palette.primary.main}`,
+                borderBottom: `0.25rem solid ${theme.palette.primary.main}`,
                 width: '100%',
                 display: 'block',
                 bottom: 0,
             },
         },
-    })
+    }),
 );

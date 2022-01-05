@@ -9,7 +9,13 @@ import { useStyles } from "./styles";
 // Interfaces
 import { IProps } from "./interfaces";
 
-const MyTablePagination: React.FC<IProps<any>> = ({ dataCount, page, rowsPerPage, handleChangePage, handleChangeRowsPerPage }) => {
+const MyTablePagination: React.FC<IProps<any>> = ({
+    dataCount,
+    page,
+    rowsPerPage,
+    handleChangePage,
+    handleChangeRowsPerPage,
+}) => {
     // Material UI
     const classes = useStyles();
 

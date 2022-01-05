@@ -1,14 +1,10 @@
-import React from "react";
+import React from 'react';
 
 // Components
-import ResetPasswordContainer from "../../components/Containers/ResetPassword";
+import ResetPasswordContainer from '../../components/Containers/ResetPassword';
 
 const ResetPassword: React.FC<{}> = () => {
-    return (
-        <>
-            <ResetPasswordContainer />
-        </>
-    );
+    return <ResetPasswordContainer />;
 };
 
 export default ResetPassword;

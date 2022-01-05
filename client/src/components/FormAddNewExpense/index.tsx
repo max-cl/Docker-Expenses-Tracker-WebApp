@@ -44,7 +44,7 @@ const FormAddNewExpense: React.FC<IProps> = ({
         <Form onSubmit={handleAdd}>
             <>
                 {expenseStatus === 201 && (
-                    <div style={{ textAlign: 'center' }}>
+                    <div>
                         <Typography color="primary">{expenseMessage}</Typography>
                     </div>
                 )}

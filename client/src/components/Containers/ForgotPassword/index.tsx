@@ -26,9 +26,7 @@ import { URL_FORGOT_PASSWORD } from '../../../redux/apis';
 // Utils
 import { errorManagment } from '../../../utils';
 
-const title = {
-    pageTitle: 'Forgot Password',
-};
+const pageTitle = 'Forgot Password';
 
 const ForgotPassword: React.FC<{}> = () => {
     // Material UI styles
@@ -67,23 +65,23 @@ const ForgotPassword: React.FC<{}> = () => {
 
     return (
         <>
-            <div>
-                <AppBar position="static" className={classes.appBar}>
-                    <Toolbar>
-                        <Typography variant="h6" className={classes.titleAppBar}>
-                            {title.pageTitle || 'Page Title Placeholder'}
-                        </Typography>
-                    </Toolbar>
-                </AppBar>
-            </div>
+            <AppBar position="static" className={classes.appBar}>
+                <Toolbar>
+                    <Typography variant="h6" className={classes.titleAppBar}>
+                        {pageTitle || 'Page Title Placeholder'}
+                    </Typography>
+                </Toolbar>
+            </AppBar>
             <div className={classes.container}>
-                <FormForgotPassword
-                    data={data}
-                    handleOnChange={handleOnChange}
-                    handleSubmit={handleSubmit}
-                    errorInfo={errorInfo}
-                    responseSuccess={responseSuccess}
-                />
+                <div className={classes.formContainer}>
+                    <FormForgotPassword
+                        data={data}
+                        handleOnChange={handleOnChange}
+                        handleSubmit={handleSubmit}
+                        errorInfo={errorInfo}
+                        responseSuccess={responseSuccess}
+                    />
+                </div>
             </div>
         </>
     );

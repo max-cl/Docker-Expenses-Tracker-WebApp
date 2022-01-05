@@ -48,7 +48,7 @@ const FormRegisterUser: React.FC<IProps> = ({
             <Form onSubmit={handleSubmit}>
                 <>
                     {newUserResponse.userStatus === 201 && (
-                        <div style={{ textAlign: 'center' }}>
+                        <div>
                             <Typography color="primary">{newUserResponse.userMessage}</Typography>
                         </div>
                     )}

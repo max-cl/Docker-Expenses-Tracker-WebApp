@@ -9,10 +9,5 @@ export const useStyles = makeStyles((theme: Theme) =>
             padding: theme.spacing(10, 5),
             zIndex: 1,
         },
-        forgotPasswordLink: {
-            textDecoration: 'none',
-            color: 'white',
-            fontWeight: 600,
-        },
     }),
 );

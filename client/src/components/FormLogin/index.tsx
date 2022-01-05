@@ -80,14 +80,7 @@ const FormLogin: React.FC<ILogin> = ({ loginInfo, handleOnChange, handleLogin, e
                     />
 
                     <Button label="Login" color="primary" isDisabled={false} btnType="submit" />
-                    <Typography
-                        variant="body2"
-                        color="primary"
-                        align="right"
-                        component={Link}
-                        to="/forgotpassword"
-                        style={{ textDecoration: 'none', color: 'white', fontWeight: 500 }}
-                    >
+                    <Typography variant="body2" align="right" component={Link} to="/forgotpassword" className={classes.forgotPasswordLink}>
                         Forgot password?
                     </Typography>
                 </>

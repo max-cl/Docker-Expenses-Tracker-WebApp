@@ -116,7 +116,11 @@ const Line: React.FC<ILineProps> = ({ data }) => {
                     </Typography>
                 </div>
                 <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-                    <img src={process.env.PUBLIC_URL + `${imgpath_NO_DATA_FOUND}`} className={classes.image} alt="no_data_found" />
+                    <img
+                        src={process.env.PUBLIC_URL + `${imgpath_NO_DATA_FOUND}`}
+                        className={classes.image}
+                        alt="no_data_found"
+                    />
                 </div>
             </div>
         );

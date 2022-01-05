@@ -1,14 +1,10 @@
-import React from "react";
+import React from 'react';
 
 // Material UI
-import Spinner from "@material-ui/core/CircularProgress";
+import Spinner from '@material-ui/core/CircularProgress';
 
 const MySpinner: React.FC<{}> = () => {
-    return (
-        <>
-            <Spinner color="primary" size={80} />
-        </>
-    );
+    return <Spinner color="primary" size={80} />;
 };
 
 export default MySpinner;

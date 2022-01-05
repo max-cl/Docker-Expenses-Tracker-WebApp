@@ -26,7 +26,6 @@ const Dashboard: React.FC<{}> = () => {
     const classes = useStyles();
     // To use the actions
     const dispatch = useDispatch();
-
     // Global States (Redux Store)
     const userInfo = useSelector((state: RootState) => state.auth.user);
     const dashboardData = useSelector((state: RootState) => state.dashboard.dashboardData);

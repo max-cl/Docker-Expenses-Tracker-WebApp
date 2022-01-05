@@ -1,17 +1,17 @@
-import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 
 export const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         mainContainer: {
-            display: "flex",
-            flexWrap: "wrap",
-            padding: theme.spacing(2),
-            justifyContent: "center",
+            display: 'flex',
+            flexWrap: 'wrap',
+            padding: theme.spacing(2, 4),
+            justifyContent: 'center',
         },
         buttonAddExpensecontainer: {
-            display: "flex",
-            justifyContent: "flex-end",
-            alignItems: "center",
+            display: 'flex',
+            justifyContent: 'flex-end',
+            alignItems: 'center',
             flex: 1,
         },
     }),

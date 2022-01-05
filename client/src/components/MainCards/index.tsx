@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react';
 
 // Components
-import Card from "../Common/Card";
+import Card from '../Common/Card';
 
 // Styles
-import { useStyles } from "./styles";
+import { useStyles } from './styles';
 
 export interface IProps {
     chart1: React.ReactNode;

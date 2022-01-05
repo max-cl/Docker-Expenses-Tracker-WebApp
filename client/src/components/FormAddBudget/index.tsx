@@ -1,21 +1,21 @@
-import React, { useEffect } from "react";
-import { useForm } from "react-hook-form";
+import React, { useEffect } from 'react';
+import { useForm } from 'react-hook-form';
 
 // Components
-import Form from "../Common/Controls/Form";
-import Input from "../Common/Controls/Input";
-import DatePicker from "../Common/Controls/DatePicker";
-import Button from "../Common/Controls/Button";
-import ServerError from "../Common/ServerError";
+import Form from '../Common/Controls/Form';
+import Input from '../Common/Controls/Input';
+import DatePicker from '../Common/Controls/DatePicker';
+import Button from '../Common/Controls/Button';
+import ServerError from '../Common/ServerError';
 
 // Material-UI
-import Typography from "@material-ui/core/Typography";
+import Typography from '@material-ui/core/Typography';
 
 // Interfaces
-import { IProps } from "./interfaces";
+import { IProps } from './interfaces';
 
 // Utils
-import { addServerErrors } from "../utils";
+import { addServerErrors } from '../utils';
 
 const FormAddBudget: React.FC<IProps> = ({ newBudget, handleOnChange, handleAdd, errorInfo, handleDateChange, newBudgetResponse }) => {
     // React Hook Form
@@ -33,7 +33,7 @@ const FormAddBudget: React.FC<IProps> = ({ newBudget, handleOnChange, handleAdd,
         <Form onSubmit={handleAdd}>
             <>
                 {newBudgetResponse.budgetStatus === 201 && (
-                    <div style={{ textAlign: "center" }}>
+                    <div>
                         <Typography color="primary">{newBudgetResponse.budgetMessage}</Typography>
                     </div>
                 )}
@@ -43,7 +43,7 @@ const FormAddBudget: React.FC<IProps> = ({ newBudget, handleOnChange, handleAdd,
                     label="Amount"
                     required={true}
                     isError={errors.amount ? true : false}
-                    errorMessage={errors.amount ? errors.amount.message : ""}
+                    errorMessage={errors.amount ? errors.amount.message : ''}
                     handleOnChange={handleOnChange}
                     value={newBudget.amount}
                     adornment="$"

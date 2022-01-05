@@ -1,14 +1,10 @@
-import React from "react";
+import React from 'react';
 
 // Components
-import DashboardContainer from "../../components/Containers/Dashboard";
+import DashboardContainer from '../../components/Containers/Dashboard';
 
 const Dashboard: React.FC<{}> = () => {
-    return (
-        <>
-            <DashboardContainer />
-        </>
-    );
+    return <DashboardContainer />;
 };
 
 export default Dashboard;

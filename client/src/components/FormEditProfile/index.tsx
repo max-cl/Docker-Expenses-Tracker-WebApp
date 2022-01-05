@@ -33,7 +33,7 @@ const FormEditProfile: React.FC<IProps> = ({ profileInfo, handleOnChange, handle
             <Form onSubmit={handleUpdate}>
                 <>
                     {userStatus === 200 && (
-                        <div style={{ textAlign: 'center' }}>
+                        <div>
                             <Typography color="primary">{userMessage}</Typography>
                         </div>
                     )}

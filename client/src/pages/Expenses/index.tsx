@@ -1,14 +1,10 @@
-import React from "react";
+import React from 'react';
 
 // Components
-import ExpenseContainer from "../../components/Containers/Expense";
+import ExpenseContainer from '../../components/Containers/Expense';
 
 const Dashboard: React.FC<{}> = () => {
-    return (
-        <>
-            <ExpenseContainer />
-        </>
-    );
+    return <ExpenseContainer />;
 };
 
 export default Dashboard;

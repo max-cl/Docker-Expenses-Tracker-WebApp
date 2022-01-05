@@ -1,22 +1,22 @@
-import React, { useEffect } from "react";
-import { useForm } from "react-hook-form";
+import React, { useEffect } from 'react';
+import { useForm } from 'react-hook-form';
 
 // Components
-import Form from "../Common/Controls/Form";
-import Input from "../Common/Controls/Input";
-import Select from "../Common/Controls/Select";
-import DatePicker from "../Common/Controls/DatePicker";
-import Button from "../Common/Controls/Button";
-import ServerError from "../Common/ServerError";
+import Form from '../Common/Controls/Form';
+import Input from '../Common/Controls/Input';
+import Select from '../Common/Controls/Select';
+import DatePicker from '../Common/Controls/DatePicker';
+import Button from '../Common/Controls/Button';
+import ServerError from '../Common/ServerError';
 
 // Material-UI
-import Typography from "@material-ui/core/Typography";
+import Typography from '@material-ui/core/Typography';
 
 // Interfaces
-import { IProps } from "./interfaces";
+import { IProps } from './interfaces';
 
 // Utils
-import { addServerErrors } from "../utils";
+import { addServerErrors } from '../utils';
 
 const FormEditExpense: React.FC<IProps> = ({
     expenseSelected,
@@ -45,7 +45,7 @@ const FormEditExpense: React.FC<IProps> = ({
             <Form onSubmit={handleUpdate}>
                 <>
                     {expenseStatus === 200 && (
-                        <div style={{ textAlign: "center" }}>
+                        <div>
                             <Typography color="primary">{expenseMessage}</Typography>
                         </div>
                     )}
@@ -55,7 +55,7 @@ const FormEditExpense: React.FC<IProps> = ({
                         label="Expense name"
                         required={true}
                         isError={errors.expense_name ? true : false}
-                        errorMessage={errors.expense_name ? errors.expense_name.message : ""}
+                        errorMessage={errors.expense_name ? errors.expense_name.message : ''}
                         handleOnChange={handleOnChange}
                         value={expenseSelected.expense_name}
                         adornment=""
@@ -70,7 +70,7 @@ const FormEditExpense: React.FC<IProps> = ({
                         label="Categories"
                         required={true}
                         isError={errors.category_id ? true : false}
-                        errorMessage={errors.category_id ? errors.category_id.message : ""}
+                        errorMessage={errors.category_id ? errors.category_id.message : ''}
                         handleOnChange={handleOnChangeSelect}
                         value={expenseSelected.category_id}
                         errors={errors.category_id ? { category_id: errors.category_id } : {}}
@@ -83,7 +83,7 @@ const FormEditExpense: React.FC<IProps> = ({
                         label="Amount"
                         required={true}
                         isError={errors.amount ? true : false}
-                        errorMessage={errors.amount ? errors.amount.message : ""}
+                        errorMessage={errors.amount ? errors.amount.message : ''}
                         handleOnChange={handleOnChange}
                         value={expenseSelected.amount}
                         adornment="$"
@@ -106,7 +106,7 @@ const FormEditExpense: React.FC<IProps> = ({
                         label="Image URL"
                         required={true}
                         isError={errors.img_link ? true : false}
-                        errorMessage={errors.img_link ? errors.img_link.message : ""}
+                        errorMessage={errors.img_link ? errors.img_link.message : ''}
                         handleOnChange={handleOnChange}
                         value={expenseSelected.img_link}
                         adornment=""

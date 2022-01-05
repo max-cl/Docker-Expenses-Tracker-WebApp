@@ -1,9 +1,9 @@
-import { makeStyles, createStyles } from "@material-ui/core/styles";
+import { makeStyles, createStyles } from '@material-ui/core/styles';
 
 export const useStyles = makeStyles(() =>
     createStyles({
         table: {
-            minWidth: "100%",
+            minWidth: '100%',
         },
     }),
 );

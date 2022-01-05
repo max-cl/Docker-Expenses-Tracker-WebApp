@@ -1,23 +1,28 @@
-import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
-import { useForm } from "react-hook-form";
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
 
 // Components
-import Form from "../Common/Controls/Form";
-import Input from "../Common/Controls/Input";
-import Button from "../Common/Controls/Button";
-import ServerError from "../Common/ServerError";
+import Form from '../Common/Controls/Form';
+import Input from '../Common/Controls/Input';
+import Button from '../Common/Controls/Button';
+import ServerError from '../Common/ServerError';
 
 // Material UI
-import Typography from "@material-ui/core/Typography";
+import Typography from '@material-ui/core/Typography';
 
 // Interfaces
-import { IProps } from "./interfaces";
+import { IProps } from './interfaces';
 
 // Utils
-import { addServerErrors } from "../utils";
+import { addServerErrors } from '../utils';
+
+// Styles
+import { useStyles } from './styles';
 
 const FormForgotPassword: React.FC<IProps> = ({ data, handleOnChange, handleSubmit, errorInfo, responseSuccess }) => {
+    // Styles
+    const classes = useStyles();
     // React Hook Form
     const { errors, setError, control, clearErrors } = useForm<typeof data>();
 
@@ -30,12 +35,14 @@ const FormForgotPassword: React.FC<IProps> = ({ data, handleOnChange, handleSubm
     }, [errorInfo.inputFields, clearErrors, setError]);
 
     return (
-        <>
+        <div className={classes.FormContainer}>
             <Form onSubmit={handleSubmit}>
                 <>
                     {responseSuccess.responseStatus === 200 && (
                         <div>
-                            <Typography color="primary">{responseSuccess.responseMessage}</Typography>
+                            <Typography variant="body1" color="primary">
+                                {responseSuccess.responseMessage}
+                            </Typography>
                         </div>
                     )}
                     <ServerError error={{ id: errorInfo.id, status: errorInfo.status, message: errorInfo.message }} />
@@ -44,7 +51,7 @@ const FormForgotPassword: React.FC<IProps> = ({ data, handleOnChange, handleSubm
                         label="Email"
                         required={true}
                         isError={errors.email ? true : false}
-                        errorMessage={errors.email ? errors.email.message : ""}
+                        errorMessage={errors.email ? errors.email.message : ''}
                         handleOnChange={handleOnChange}
                         value={data.email}
                         adornment=""
@@ -55,13 +62,13 @@ const FormForgotPassword: React.FC<IProps> = ({ data, handleOnChange, handleSubm
                         clearErrors={clearErrors}
                     />
 
-                    <div>
+                    <>
                         <Button label="Reset Password" color="primary" isDisabled={false} btnType="submit" />
                         <Button label="Back home" color="secondary" isDisabled={false} btnType="button" component={Link} to="/login" />
-                    </div>
+                    </>
                 </>
             </Form>
-        </>
+        </div>
     );
 };
 

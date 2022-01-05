@@ -1,34 +1,34 @@
-import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
 // Material UI
-import EditIcon from "@material-ui/icons/Edit";
-import AddIcon from "@material-ui/icons/Add";
+import EditIcon from '@material-ui/icons/Edit';
+import AddIcon from '@material-ui/icons/Add';
 
 // Components
-import FormEditProfile from "../../FormEditProfile";
-import FormAddBudget from "../../FormAddBudget";
-import Modal from "../../Common/Modal";
-import Button from "../../Common/Controls/Button";
-import Spinner from "../../Common/Spinner";
-import Card from "../../Common/Card";
-import ProfileInformation from "../../ProfileInformation";
+import FormEditProfile from '../../FormEditProfile';
+import FormAddBudget from '../../FormAddBudget';
+import Modal from '../../Common/Modal';
+import Button from '../../Common/Controls/Button';
+import Spinner from '../../Common/Spinner';
+import Card from '../../Common/Card';
+import ProfileInformation from '../../ProfileInformation';
 
 // Actions
-import { cleanAuthResponseSuccess } from "../../../redux/actions/auth.action";
+import { cleanAuthResponseSuccess } from '../../../redux/actions/auth.action';
 
 // Thunks
-import { updateUserInformation } from "../../../redux/thunks/auth.thunk";
-import { createBudget, cleanBudgetStates } from "../../../redux/thunks/budget.thunk";
-import { clearErrors } from "../../../redux/thunks/error.thunk";
+import { updateUserInformation } from '../../../redux/thunks/auth.thunk';
+import { createBudget, cleanBudgetStates } from '../../../redux/thunks/budget.thunk';
+import { clearErrors } from '../../../redux/thunks/error.thunk';
 
 // Types
-import { IProfileInfo, IAddBudget } from "./interfaces";
-import { RootState } from "../../../redux/reducers";
+import { IProfileInfo, IAddBudget } from './interfaces';
+import { RootState } from '../../../redux/reducers';
 
 // Styles
-import { useStyles } from "./styles";
+import { useStyles } from './styles';
 
 const Profile: React.FC<{}> = () => {
     // Material UI
@@ -42,10 +42,10 @@ const Profile: React.FC<{}> = () => {
     const [openUpdateInfo, setOpenUpdateInfo] = useState<boolean>(false);
     const [openAddBudget, setOpenAddBudget] = useState<boolean>(false);
     const [profileInfo, setProfileInfo] = useState<IProfileInfo>({
-        username: "",
-        first_name: "",
-        last_name: "",
-        email: "",
+        username: '',
+        first_name: '',
+        last_name: '',
+        email: '',
     });
     const [newBudget, setNewBudget] = useState<IAddBudget>({ amount: 0, budget_date: new Date() });
 
@@ -60,10 +60,7 @@ const Profile: React.FC<{}> = () => {
 
     useEffect(() => {
         if (!isAuthenticated) {
-            history.push("/login");
-        } else {
-            if (Object.entries(userInfo).length > 0) {
-            }
+            history.push('/login');
         }
     }, [isAuthenticated, userInfo, history, dispatch]);
 
@@ -103,7 +100,7 @@ const Profile: React.FC<{}> = () => {
 
     if (Object.keys(userInfo).length === 0) {
         return (
-            <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+            <div className={classes.containerSpinner}>
                 <Spinner />
             </div>
         );
