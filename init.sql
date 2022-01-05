@@ -1,2 +1,2 @@
 -- Create DB
-CREATE DATABASE test;
+CREATE DATABASE etracker_db;
