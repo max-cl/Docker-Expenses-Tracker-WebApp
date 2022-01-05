@@ -4,7 +4,7 @@ FROM node:12
 COPY package*.json ./
 
 ENV PORT=5000
-ENV DB_URL=mysql://root:123123123@db:3306/test?charset=UTF8
+ENV DB_URL=mysql://user:123123@db:3306/etracker_db?charset=UTF8
 ENV JWT_SECRET=super-secret-key
 ENV EMAIL_ADDRESS=email@email.com
 ENV EMAIL_PASSWORD=email_password
