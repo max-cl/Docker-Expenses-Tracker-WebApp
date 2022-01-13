@@ -68,3 +68,4 @@ package-lock.json
 
 .prettierrc
 .env
+.env.local

@@ -4,6 +4,7 @@ export const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         container: {
             padding: theme.spacing(1, 2),
+            height: '100%',
         },
         signupContainer: {
             display: 'flex',
@@ -16,6 +17,8 @@ export const useStyles = makeStyles((theme: Theme) =>
             justifyContent: 'center',
             alignItems: 'center',
             position: 'relative',
+            zIndex: 1,
+            textAlign: 'center',
 
             '&::after': {
                 content: '""',

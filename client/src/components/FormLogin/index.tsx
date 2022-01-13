@@ -7,6 +7,7 @@ import Form from '../Common/Controls/Form';
 import Input from '../Common/Controls/Input';
 import Button from '../Common/Controls/Button';
 import ServerError from '../Common/ServerError';
+import FormContainer from '../Common/Controls/FormContainer';
 
 // Material UI
 import Typography from '@material-ui/core/Typography';
@@ -40,7 +41,7 @@ const FormLogin: React.FC<ILogin> = ({ loginInfo, handleOnChange, handleLogin, e
     }, [errorInfo.inputFields, clearErrors, setError]);
 
     return (
-        <div className={classes.FormContainer}>
+        <FormContainer>
             <Form onSubmit={handleLogin}>
                 <>
                     <ServerError error={{ id: errorInfo.id, status: errorInfo.status, message: errorInfo.message }} />
@@ -79,13 +80,13 @@ const FormLogin: React.FC<ILogin> = ({ loginInfo, handleOnChange, handleLogin, e
                         clearErrors={clearErrors}
                     />
 
-                    <Button label="Login" color="primary" isDisabled={false} btnType="submit" />
+                    <Button label="Login" color="secondary" isDisabled={false} btnType="submit" />
                     <Typography variant="body2" align="right" component={Link} to="/forgotpassword" className={classes.forgotPasswordLink}>
                         Forgot password?
                     </Typography>
                 </>
             </Form>
-        </div>
+        </FormContainer>
     );
 };
 

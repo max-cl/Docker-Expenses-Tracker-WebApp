@@ -148,30 +148,28 @@ const Login: React.FC<{}> = () => {
     }, [isAuthenticated, history]);
 
     return (
-        <>
-            <div className={classes.container}>
-                <div className={classes.signupContainer}>
-                    <Modal open={openAddUser} handleModal={() => setOpenAddUser(!openAddUser)}>
-                        <FormRegisterUser
-                            newUser={newUser}
-                            handleOnChange={handleOnChangeAddNewUser}
-                            handleSubmit={handleAddNewUser}
-                            errorInfo={errorInfo}
-                            newUserResponse={newUserResponse}
-                            dataOptions={dataOptions}
-                            handleOnChangeSelect={handleOnChangeSelectRoles}
-                        />
-                    </Modal>
-                    <Button label="SignUp" color="primary" isDisabled={false} btnType="button" onClick={openModalAddUser} />
-                </div>
-                <Typography variant="h2" className={classes.greeting}>
-                    Expenses Tracker
-                </Typography>
+        <div className={classes.container}>
+            <div className={classes.signupContainer}>
+                <Modal open={openAddUser} handleModal={() => setOpenAddUser(!openAddUser)}>
+                    <FormRegisterUser
+                        newUser={newUser}
+                        handleOnChange={handleOnChangeAddNewUser}
+                        handleSubmit={handleAddNewUser}
+                        errorInfo={errorInfo}
+                        newUserResponse={newUserResponse}
+                        dataOptions={dataOptions}
+                        handleOnChangeSelect={handleOnChangeSelectRoles}
+                    />
+                </Modal>
+                <Button label="SignUp" color="primary" isDisabled={false} btnType="button" onClick={openModalAddUser} />
             </div>
+            <Typography variant="h2" className={classes.greeting}>
+                Expenses Tracker
+            </Typography>
             <div className={classes.loginContainer}>
                 <FormLogin loginInfo={loginInfo} handleOnChange={handleOnChange} handleLogin={handleLogin} errorInfo={errorInfo} />
             </div>
-        </>
+        </div>
     );
 };
 

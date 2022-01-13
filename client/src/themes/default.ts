@@ -16,12 +16,10 @@ const secondaryText = secondary;
 const hintText = '#B9B9B9';
 const disabledText = '#9E9E9E';
 
-// const bgDefault = '#252837';
 const bgDefault = '#24282F';
 const glassColor = 'linear-gradient(to right bottom, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.3))';
-// const bgDark = '#24282F';
 
-const inputBgColor = '#FFFFFF';
+const inputBgColor = '#f2f2f2';
 
 const defaultTheme: ThemeOptions = {
     palette: {
@@ -69,14 +67,14 @@ const defaultTheme: ThemeOptions = {
                 color: secondary,
                 backgroundColor: primary,
                 fontWeight: 800,
-                borderRadius: 2,
+                borderRadius: 0,
             },
         },
         MuiInputBase: {
             input: {
                 color: secondaryText,
                 backgroundColor: inputBgColor,
-                borderRadius: 2,
+                borderRadius: 0,
                 fontSize: '1em',
                 inputMultiline: {
                     '&:hover': {
@@ -93,6 +91,7 @@ const defaultTheme: ThemeOptions = {
         },
         MuiFilledInput: {
             root: {
+                borderRadius: 0,
                 backgroundColor: inputBgColor,
                 '&.Mui-focused': {
                     backgroundColor: inputBgColor,
@@ -111,6 +110,11 @@ const defaultTheme: ThemeOptions = {
                 },
                 '&:selected': {
                     backgroundColor: inputBgColor,
+                },
+            },
+            underline: {
+                '&:after': {
+                    borderBottom: `2px solid ${secondary}`,
                 },
             },
         },
@@ -164,8 +168,12 @@ const defaultTheme: ThemeOptions = {
         },
         MuiTableCell: {
             head: {
-                color: `${secondary} !important`,
                 fontWeight: 600,
+                backgroundColor: `${bgDefault} !important`,
+            },
+            body: {
+                backgroundColor: '#fefefe',
+                color: `${secondary} !important`,
             },
         },
         /** Start DatePciker */

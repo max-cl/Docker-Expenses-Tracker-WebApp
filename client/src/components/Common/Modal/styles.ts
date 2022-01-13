@@ -23,5 +23,5 @@ export const useStyles = makeStyles((theme: Theme) =>
             left: '50%',
             transform: 'translate(-50%, -50%)',
         },
-    })
+    }),
 );
