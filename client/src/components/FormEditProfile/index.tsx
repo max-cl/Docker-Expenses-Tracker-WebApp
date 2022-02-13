@@ -6,6 +6,7 @@ import Form from '../Common/Controls/Form';
 import Input from '../Common/Controls/Input';
 import Button from '../Common/Controls/Button';
 import ServerError from '../Common/ServerError';
+import ButtonContainer from '../Common/Controls/ButtonContainer';
 
 // Material-UI
 import Typography from '@material-ui/core/Typography';
@@ -99,8 +100,9 @@ const FormEditProfile: React.FC<IProps> = ({ profileInfo, handleOnChange, handle
                         control={control}
                         clearErrors={clearErrors}
                     />
-
-                    <Button label="Update" color="primary" isDisabled={false} btnType="submit" />
+                    <ButtonContainer>
+                        <Button label="Update" color="primary" isDisabled={false} btnType="submit" />
+                    </ButtonContainer>
                 </>
             </Form>
         </>

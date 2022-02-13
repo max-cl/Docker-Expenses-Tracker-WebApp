@@ -7,6 +7,7 @@ import Form from '../Common/Controls/Form';
 import Input from '../Common/Controls/Input';
 import Button from '../Common/Controls/Button';
 import ServerError from '../Common/ServerError';
+import ButtonContainer from '../Common/Controls/ButtonContainer';
 
 // Material UI
 import Typography from '@material-ui/core/Typography';
@@ -63,8 +64,12 @@ const FormForgotPassword: React.FC<IProps> = ({ data, handleOnChange, handleSubm
                     />
 
                     <>
-                        <Button label="Reset Password" color="primary" isDisabled={false} btnType="submit" />
-                        <Button label="Back home" color="secondary" isDisabled={false} btnType="button" component={Link} to="/login" />
+                        <ButtonContainer>
+                            <Button label="Reset Password" color="primary" isDisabled={false} btnType="submit" />
+                        </ButtonContainer>
+                        <ButtonContainer>
+                            <Button label="Back home" color="secondary" isDisabled={false} btnType="button" component={Link} to="/login" />
+                        </ButtonContainer>
                     </>
                 </>
             </Form>

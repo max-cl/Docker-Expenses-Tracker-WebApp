@@ -7,6 +7,7 @@ import FormLogin from '../../FormLogin';
 import FormRegisterUser from '../../FormRegisterUser';
 import Button from '../../Common/Controls/Button';
 import Modal from '../../Common/Modal';
+import ButtonContainer from '../../Common/Controls/ButtonContainer';
 
 // Thunks
 import { login } from '../../../redux/thunks/auth.thunk';
@@ -161,7 +162,9 @@ const Login: React.FC<{}> = () => {
                         handleOnChangeSelect={handleOnChangeSelectRoles}
                     />
                 </Modal>
-                <Button label="SignUp" color="primary" isDisabled={false} btnType="button" onClick={openModalAddUser} />
+                <ButtonContainer>
+                    <Button label="SignUp" color="primary" isDisabled={false} btnType="button" onClick={openModalAddUser} />
+                </ButtonContainer>
             </div>
             <Typography variant="h2" className={classes.greeting}>
                 Expenses Tracker

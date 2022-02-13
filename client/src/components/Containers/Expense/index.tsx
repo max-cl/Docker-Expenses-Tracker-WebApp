@@ -12,6 +12,7 @@ import Modal from '../../Common/Modal';
 import FormAddNewExpense from '../../FormAddNewExpense';
 import FormEditExpense from '../../FormEditExpense';
 import Button from '../../Common/Controls/Button';
+import ButtonContainer from '../../Common/Controls/ButtonContainer';
 
 // Thunks
 import { getExpenses, removeExpense, updateExpense, createExpense } from '../../../redux/thunks/expenses.thunk';
@@ -154,14 +155,16 @@ const Expense: React.FC<{}> = () => {
         return (
             <div className={classes.mainContainer}>
                 <div>
-                    <Button
-                        label="Add Expense"
-                        color="primary"
-                        isDisabled={false}
-                        onClick={openModalAddExpense}
-                        btnType="button"
-                        icon={<AddIcon />}
-                    />
+                    <ButtonContainer>
+                        <Button
+                            label="Add Expense"
+                            color="primary"
+                            isDisabled={false}
+                            onClick={openModalAddExpense}
+                            btnType="button"
+                            icon={<AddIcon />}
+                        />
+                    </ButtonContainer>
                     <Typography variant="subtitle1" color="textPrimary" component="h3" align="center">
                         None Expenses added
                     </Typography>
@@ -212,14 +215,16 @@ const Expense: React.FC<{}> = () => {
                 />
             </Modal>
             <div className={classes.buttonAddExpensecontainer}>
-                <Button
-                    label="Add Expense"
-                    color="primary"
-                    isDisabled={false}
-                    onClick={openModalAddExpense}
-                    btnType="button"
-                    icon={<AddIcon />}
-                />
+                <ButtonContainer>
+                    <Button
+                        label="Add Expense"
+                        color="primary"
+                        isDisabled={false}
+                        onClick={openModalAddExpense}
+                        btnType="button"
+                        icon={<AddIcon />}
+                    />
+                </ButtonContainer>
             </div>
 
             <TableExpenses data={expenses} deleteExpense={deleteExpense} editExpense={editExpense} expenseCategories={expenseCategories} />

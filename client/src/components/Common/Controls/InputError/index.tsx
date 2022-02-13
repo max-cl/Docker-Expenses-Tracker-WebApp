@@ -21,8 +21,8 @@ const ErrorSummary: React.FC<ErrorSummaryProps<any>> = ({ errors }) => {
 
     return (
         <>
-            {Object.keys(errors).map((fieldName) => (
-                <Fade in={true}>
+            {Object.keys(errors).map((fieldName, index) => (
+                <Fade in={true} key={index}>
                     <div className={classes.containerErrorMessage}>
                         <ErrorMessage errors={errors} name={fieldName as any} as="p" key={fieldName} className={classes.errorMessage} />
                     </div>

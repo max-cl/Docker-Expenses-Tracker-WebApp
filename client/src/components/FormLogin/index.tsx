@@ -8,6 +8,7 @@ import Input from '../Common/Controls/Input';
 import Button from '../Common/Controls/Button';
 import ServerError from '../Common/ServerError';
 import FormContainer from '../Common/Controls/FormContainer';
+import ButtonContainer from '../Common/Controls/ButtonContainer';
 
 // Material UI
 import Typography from '@material-ui/core/Typography';
@@ -80,7 +81,9 @@ const FormLogin: React.FC<ILogin> = ({ loginInfo, handleOnChange, handleLogin, e
                         clearErrors={clearErrors}
                     />
 
-                    <Button label="Login" color="secondary" isDisabled={false} btnType="submit" />
+                    <ButtonContainer>
+                        <Button label="Login" color="secondary" isDisabled={false} btnType="submit" />
+                    </ButtonContainer>
                     <Typography variant="body2" align="right" component={Link} to="/forgotpassword" className={classes.forgotPasswordLink}>
                         Forgot password?
                     </Typography>

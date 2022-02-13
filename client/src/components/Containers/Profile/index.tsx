@@ -14,6 +14,7 @@ import Button from '../../Common/Controls/Button';
 import Spinner from '../../Common/Spinner';
 import Card from '../../Common/Card';
 import ProfileInformation from '../../ProfileInformation';
+import ButtonContainer from '../../Common/Controls/ButtonContainer';
 
 // Actions
 import { cleanAuthResponseSuccess } from '../../../redux/actions/auth.action';
@@ -129,22 +130,26 @@ const Profile: React.FC<{}> = () => {
                     />
                 </Modal>
                 <ProfileInformation userInfo={userInfo}>
-                    <Button
-                        label="Edit Info"
-                        color="primary"
-                        isDisabled={false}
-                        onClick={editProfileInfo}
-                        btnType="button"
-                        icon={<EditIcon />}
-                    />
-                    <Button
-                        label="Add budget"
-                        color="primary"
-                        isDisabled={false}
-                        onClick={addNewBudget}
-                        btnType="button"
-                        icon={<AddIcon />}
-                    />
+                    <ButtonContainer>
+                        <Button
+                            label="Edit Info"
+                            color="primary"
+                            isDisabled={false}
+                            onClick={editProfileInfo}
+                            btnType="button"
+                            icon={<EditIcon />}
+                        />
+                    </ButtonContainer>
+                    <ButtonContainer>
+                        <Button
+                            label="Add budget"
+                            color="primary"
+                            isDisabled={false}
+                            onClick={addNewBudget}
+                            btnType="button"
+                            icon={<AddIcon />}
+                        />
+                    </ButtonContainer>
                 </ProfileInformation>
             </Card>
         </div>

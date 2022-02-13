@@ -7,6 +7,7 @@ import Form from '../Common/Controls/Form';
 import Input from '../Common/Controls/Input';
 import Button from '../Common/Controls/Button';
 import ServerError from '../Common/ServerError';
+import ButtonContainer from '../Common/Controls/ButtonContainer';
 
 // Material-UI
 import VisibilityIcon from '@material-ui/icons/Visibility';
@@ -98,8 +99,12 @@ const FormUpdatePassword: React.FC<IProps> = ({ data, handleOnChange, handleSubm
                     />
 
                     <>
-                        <Button label="Update Password" color="primary" isDisabled={false} btnType="submit" />
-                        <Button label="Back home" color="secondary" isDisabled={false} btnType="button" component={Link} to="/login" />
+                        <ButtonContainer>
+                            <Button label="Update Password" color="primary" isDisabled={false} btnType="submit" />
+                        </ButtonContainer>
+                        <ButtonContainer>
+                            <Button label="Back home" color="secondary" isDisabled={false} btnType="button" component={Link} to="/login" />
+                        </ButtonContainer>
                     </>
                 </>
             </Form>

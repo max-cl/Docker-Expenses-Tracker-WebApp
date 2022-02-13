@@ -7,6 +7,7 @@ import Input from '../Common/Controls/Input';
 import DatePicker from '../Common/Controls/DatePicker';
 import Button from '../Common/Controls/Button';
 import ServerError from '../Common/ServerError';
+import ButtonContainer from '../Common/Controls/ButtonContainer';
 
 // Material-UI
 import Typography from '@material-ui/core/Typography';
@@ -61,7 +62,9 @@ const FormAddBudget: React.FC<IProps> = ({ newBudget, handleOnChange, handleAdd,
                     isError={errors.budget_date ? true : false}
                     required={true}
                 />
-                <Button label="Add" color="primary" isDisabled={false} btnType="submit" />
+                <ButtonContainer>
+                    <Button label="Add" color="primary" isDisabled={false} btnType="submit" />
+                </ButtonContainer>
             </>
         </Form>
     );

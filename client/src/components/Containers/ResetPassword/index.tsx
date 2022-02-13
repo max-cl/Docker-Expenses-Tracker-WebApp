@@ -12,6 +12,7 @@ import Typography from '@material-ui/core/Typography';
 import Spinner from '../../Common/Spinner';
 import Button from '../../Common/Controls/Button';
 import FormUpdatePassword from '../../FormUpdatePassword';
+import ButtonContainer from '../../Common/Controls/ButtonContainer';
 
 // Constants
 import { URL_RESET_PASSWORD, URL_UPDATE_PASSWORD } from '../../../redux/apis';
@@ -142,15 +143,26 @@ const ResetPassword: React.FC<{}> = () => {
                             {messageFromServer}
                         </Typography>
                         <div>
-                            <Button label="Back home" color="primary" isDisabled={false} btnType="submit" component={Link} to="/login" />
-                            <Button
-                                label="Back forgot password"
-                                color="secondary"
-                                isDisabled={false}
-                                btnType="button"
-                                component={Link}
-                                to="/forgotpassword"
-                            />
+                            <ButtonContainer>
+                                <Button
+                                    label="Back home"
+                                    color="primary"
+                                    isDisabled={false}
+                                    btnType="submit"
+                                    component={Link}
+                                    to="/login"
+                                />
+                            </ButtonContainer>
+                            <ButtonContainer>
+                                <Button
+                                    label="Back forgot password"
+                                    color="secondary"
+                                    isDisabled={false}
+                                    btnType="button"
+                                    component={Link}
+                                    to="/forgotpassword"
+                                />
+                            </ButtonContainer>
                         </div>
                     </div>
                 </div>

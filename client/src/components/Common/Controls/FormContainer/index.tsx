@@ -3,6 +3,7 @@ import React, { ReactNode } from 'react';
 // Styles
 import { useStyles } from './styles';
 
+// Interfaces
 export interface IProps {
     children: ReactNode;
 }
@@ -10,6 +11,7 @@ export interface IProps {
 const FormContainer: React.FC<IProps> = ({ children }) => {
     // Material UI
     const classes = useStyles();
+
     return <div className={classes.container}>{children}</div>;
 };
 

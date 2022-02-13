@@ -3,11 +3,10 @@ import { Controller } from 'react-hook-form';
 
 // Components
 import ErrorSummary from '../InputError';
+import TextField from './textfield';
 
 // Material UI
-import TextField from '@material-ui/core/TextField';
 import FormControl from '@material-ui/core/FormControl';
-import InputAdornment from '@material-ui/core/InputAdornment';
 
 // Interfaces
 import { IProps } from './interfaces';
@@ -35,32 +34,19 @@ const MyInput: React.FC<IProps<any>> = ({
                 name={`${name}`}
                 render={(props) => (
                     <TextField
-                        name={`${name}`}
-                        fullWidth
-                        variant="filled"
+                        name={name}
                         label={label}
-                        InputLabelProps={{
-                            className: required ? 'required-label' : '',
-                            required: required || false,
-                            color: 'primary',
-                        }}
-                        InputProps={{
-                            startAdornment:
-                                adornmentPosition === 'start' ? <InputAdornment position="start">{adornment}</InputAdornment> : undefined,
-                            endAdornment:
-                                adornmentPosition === 'end' ? <InputAdornment position="end">{adornment}</InputAdornment> : undefined,
-                        }}
-                        onChange={(e) => {
-                            props.onChange(e.target.value);
-                            handleOnChange(e.target.name, e.target.value);
-                            clearErrors(`${name}`);
-                        }}
+                        required={required}
+                        handleOnChange={handleOnChange}
+                        adornment={adornment}
+                        adornmentPosition={adornmentPosition}
+                        inputType={inputType}
+                        isError={isError}
+                        clearErrors={clearErrors}
                         value={value}
-                        type={inputType}
-                        error={isError}
-                        // helperText={errorMessage}
                         multiline={multiline}
                         disabled={disabled}
+                        props={props}
                     />
                 )}
                 control={control}

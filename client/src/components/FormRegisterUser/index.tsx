@@ -7,6 +7,7 @@ import Input from '../Common/Controls/Input';
 import Select from '../Common/Controls/Select';
 import Button from '../Common/Controls/Button';
 import ServerError from '../Common/ServerError';
+import ButtonContainer from '../Common/Controls/ButtonContainer';
 
 // Material-UI
 import Typography from '@material-ui/core/Typography';
@@ -178,7 +179,9 @@ const FormRegisterUser: React.FC<IProps> = ({
                         clearErrors={clearErrors}
                         dataOptions={dataOptions}
                     />
-                    <Button label="Register" color="primary" isDisabled={false} btnType="submit" />
+                    <ButtonContainer>
+                        <Button label="Register" color="primary" isDisabled={false} btnType="submit" />
+                    </ButtonContainer>
                 </>
             </Form>
         </>

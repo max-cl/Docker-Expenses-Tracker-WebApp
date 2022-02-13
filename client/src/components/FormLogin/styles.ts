@@ -4,7 +4,7 @@ export const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         forgotPasswordLink: {
             textDecoration: 'none',
-            color: 'white',
+            color: theme.palette.secondary.main,
             fontWeight: 600,
         },
     }),
