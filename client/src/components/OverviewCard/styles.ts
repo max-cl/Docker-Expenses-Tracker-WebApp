@@ -17,6 +17,8 @@ export const useStyles = makeStyles((theme: Theme) =>
             justifyContent: 'space-between',
             height: 100,
             margin: theme.spacing(0.25),
+            boxShadow: 'rgb(0 0 0 / 24%) 0px 3px 8px',
+
             [theme.breakpoints.down('md')]: {
                 flexBasis: '25%',
             },

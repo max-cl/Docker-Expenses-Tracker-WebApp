@@ -12,6 +12,7 @@ export const useStyles = makeStyles((theme: Theme) =>
             }),
             backgroundColor: theme.palette.background.default,
             color: theme.palette.text.primary,
+            boxShadow: 'rgb(0 0 0 / 24%) 0px 3px 8px',
         },
         appBarShift: {
             marginLeft: drawerWidth,

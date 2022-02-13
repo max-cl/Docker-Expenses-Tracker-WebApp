@@ -9,6 +9,7 @@ export const useStyles = makeStyles((theme: Theme) =>
             gridAutoRows: 254,
             gridTemplateAreas: `'card1 card2 card2' 'card3 card3 card5' 'card4 card4 card5'`,
             gridGap: theme.spacing(1),
+
             '&>:nth-child(1)': {
                 gridArea: 'card1',
             },

@@ -9,9 +9,9 @@ export const useStyles = makeStyles((theme: Theme) =>
             transformOrigin: 'center top',
             transformStyle: 'preserve-3d',
             transform: 'translateZ(0)',
-            boxShadow: theme.shadows[0],
             transition: 'all .3s cubic-bezier(0.645, 0.045, 0.355, 1)',
             borderRadius: '.25rem',
+            boxShadow: 'rgb(0 0 0 / 24%) 0px 3px 8px',
         },
     }),
 );
