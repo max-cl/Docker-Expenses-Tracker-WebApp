@@ -21,5 +21,5 @@ export interface IProps {
         userMessage: string;
         userStatus: number;
     };
-    dataOptions: any[];
+    dataOptions: { category_id: number; category_name: string }[];
 }

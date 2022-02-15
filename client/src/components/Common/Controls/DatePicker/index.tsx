@@ -1,13 +1,13 @@
-import "date-fns";
-import React from "react";
-import DateFnsUtils from "@date-io/date-fns";
-import { MuiPickersUtilsProvider, KeyboardDatePicker } from "@material-ui/pickers";
+import 'date-fns';
+import React from 'react';
+import DateFnsUtils from '@date-io/date-fns';
+import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers';
 
 // Material UI
-import Grid from "@material-ui/core/Grid";
+import Grid from '@material-ui/core/Grid';
 
 // Components
-import ErrorSummary from "../InputError";
+import ErrorSummary from '../InputError';
 
 // Interfaces
 export interface IProps {
@@ -23,7 +23,7 @@ const DatePicker: React.FC<IProps> = ({ name, value, handleDateChange, errors, i
     return (
         <>
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                <Grid container justify="space-around">
+                <Grid container justifyContent="space-around">
                     <KeyboardDatePicker
                         disableToolbar
                         autoOk
@@ -37,12 +37,12 @@ const DatePicker: React.FC<IProps> = ({ name, value, handleDateChange, errors, i
                         value={value}
                         onChange={handleDateChange}
                         KeyboardButtonProps={{
-                            "aria-label": "change date",
+                            'aria-label': 'change date',
                         }}
-                        style={{ width: "100%" }}
+                        style={{ width: '100%' }}
                         error={isError}
                         InputLabelProps={{
-                            className: required ? "required-label" : "",
+                            className: required ? 'required-label' : '',
                             required: required || false,
                         }}
                         InputProps={{
@@ -51,9 +51,9 @@ const DatePicker: React.FC<IProps> = ({ name, value, handleDateChange, errors, i
                             },
                         }}
                         InputAdornmentProps={{
-                            position: "end",
+                            position: 'end',
                         }}
-                        defaultValue={value}
+                        // defaultValue={value}
                     />
                 </Grid>
             </MuiPickersUtilsProvider>

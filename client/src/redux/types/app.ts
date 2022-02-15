@@ -4,7 +4,7 @@ export const GET_APP_FAILURE = 'GET_APP_FAILURE';
 export const CLEAR_APP_STATES = 'CLEAR_APP_STATES';
 
 export interface IAppData {
-    expenseCategories: {}[];
+    expenseCategories: { category_id: number; category_name: string; createdAt: string; updatedAt: string; deletedAt: null }[];
 }
 
 export interface AppState {
