@@ -37,9 +37,9 @@ const OverviewCard: React.FC<IProps> = ({ data }) => {
     return (
         <div className={classes.container}>
             {data.map((d, index) => (
-                <>
+                <React.Fragment key={index}>
                     {d === undefined ? (
-                        <Card key={index} customClasses={classes.card}>
+                        <Card customClasses={classes.card}>
                             <CardContent>
                                 <Typography variant="subtitle1" color="textPrimary" component="h3" align="center">
                                     NO DATA FOUND
@@ -54,7 +54,7 @@ const OverviewCard: React.FC<IProps> = ({ data }) => {
                             </CardContent>
                         </Card>
                     ) : (
-                        <Card key={index} customClasses={classes.card}>
+                        <Card customClasses={classes.card}>
                             <CardContent className={classes.content}>
                                 <img src={process.env.PUBLIC_URL + `${d.imgpath}`} className={classes.image} alt={d.title} />
                                 <div className={classes.infoContent}>
@@ -75,7 +75,7 @@ const OverviewCard: React.FC<IProps> = ({ data }) => {
                             </CardContent>
                         </Card>
                     )}
-                </>
+                </React.Fragment>
             ))}
         </div>
     );

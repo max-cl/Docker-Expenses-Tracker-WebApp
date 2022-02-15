@@ -16,6 +16,7 @@ const MyButton: React.FC<IProps<any>> = ({ label, color, isDisabled, btnType, on
             startIcon={icon}
             component={component}
             to={to}
+            role="button"
         >
             {label}
         </Button>

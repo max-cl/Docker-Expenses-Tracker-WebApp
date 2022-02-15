@@ -14,7 +14,7 @@ const MyModal: React.FC<IProps> = ({ open, handleModal, children }) => {
     const classes = useStyles();
 
     return (
-        <Modal open={open} onClose={handleModal} aria-labelledby="modal" aria-describedby="modal">
+        <Modal open={open} onClose={handleModal} aria-labelledby="modal" aria-describedby="modal" data-testid="modal">
             <div className={clsx(classes.paper, classes.content)}>{children}</div>
         </Modal>
     );

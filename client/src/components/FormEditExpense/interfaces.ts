@@ -17,7 +17,7 @@ export interface IProps {
     };
     handleOnChangeSelect: (value: unknown) => void;
     handleDateChange: (date: Date | null) => void;
-    dataOptions: any[];
+    dataOptions: { category_id: number; category_name: string; createdAt: string; updatedAt: string; deletedAt: null }[];
     expenseStatus: number;
     expenseMessage: string;
 }
