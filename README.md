@@ -1,7 +1,7 @@
 # Docker - Expenses Tracker WebApp
 
 ### Login
-<img width="758" alt="login" src="https://user-images.githubusercontent.com/39265526/169651709-c81ce6c8-a5f8-49b2-a852-c0d17b655a08.png">
+<img width="480" alt="login" src="https://user-images.githubusercontent.com/39265526/169651709-c81ce6c8-a5f8-49b2-a852-c0d17b655a08.png">
 
 ## Description
 
