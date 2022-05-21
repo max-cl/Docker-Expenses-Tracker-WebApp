@@ -3,6 +3,9 @@
 ### Login
 <img width="480" alt="login" src="https://user-images.githubusercontent.com/39265526/169651709-c81ce6c8-a5f8-49b2-a852-c0d17b655a08.png">
 
+### Dashboard
+<img width="560" alt="dashboard" src="https://user-images.githubusercontent.com/39265526/169651767-fee3e2a0-1ccb-4e03-be8d-c530ba90fe86.png">
+
 ## Description
 
 ### You will find 5 sections:
